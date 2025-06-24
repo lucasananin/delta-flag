@@ -20,6 +20,11 @@ namespace StarterAssets
         public bool cursorLocked = true;
         public bool cursorInputForLook = true;
 
+        [Header("// REFERENCES")]
+        [SerializeField] InputActionReference _shoot = null;
+
+        public InputActionReference Shoot { get => _shoot; }
+
 #if ENABLE_INPUT_SYSTEM
         public void OnMove(InputValue value)
         {

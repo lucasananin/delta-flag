@@ -19,13 +19,13 @@ public class WeaponSO : ScriptableObject
 [System.Serializable]
 public class WeaponStats
 {
-    [SerializeField, Range(0, 99)] int _damage = 1;
+    [SerializeField, Range(0, 12)] int _damage = 1;
     [SerializeField, Range(0.01f, 9f)] float _fireRate = 0.1f;
     [SerializeField, Range(0, 360)] float _shootAngle = 0;
     [SerializeField, Range(1, 36)] int _projectilesPerShot = 1;
-    [SerializeField, Range(0, 99)] int _ammoPerShot = 1;
+    [SerializeField, Range(0, 9)] int _ammoPerShot = 1;
     [SerializeField, Range(0f, 9f)] float _burstRate = 0f;
-    [SerializeField, Range(0, 99)] int _shotsPerBurst = 0;
+    [SerializeField, Range(0, 9)] int _shotsPerBurst = 0;
 
     public int Damage { get => _damage; private set => _damage = value; }
     public float FireRate { get => _fireRate; private set => _fireRate = value; }

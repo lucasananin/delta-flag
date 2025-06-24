@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f64d01809026348b8423ab7a3484cb, type: 3}
   m_Name: ProjectileSO_Rifle
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _ammoSO: {fileID: 0}
+  _prefab: {fileID: 2145395115268892069, guid: bf0c2c4b9db9ad243a1738f93c7f884f, type: 3}
+  _ammoSO: {fileID: 11400000, guid: 7001c633495bb8e48983ba0a3612324f, type: 2}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   _spawnPositionOffset: {x: 0, y: 0}
+  _moveSpeed: 10

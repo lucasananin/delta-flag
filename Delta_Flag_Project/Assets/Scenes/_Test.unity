@@ -914,14 +914,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1903102405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a23b14c7b48f574991dc951869ecd4c, type: 3}
+  m_Script: {fileID: 11500000, guid: ad55bec647614a946b91cd95cba2d595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponSO: {fileID: 11400000, guid: 81bfb2908056bd34eb5fb9e4d8743a86, type: 2}
   _muzzle: {fileID: 1811788112}
-  _entitySource: {fileID: 0}
-  _ammoHandler: {fileID: 0}
+  _entitySource: {fileID: 7500310714839720162}
+  _ammoHandler: {fileID: 7500310714839720161}
   _nextFire: 0
+  _nextBurst: 0
+  _currentShootCount: 0
+  _isBursting: 0
 --- !u!1 &2130638079 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -1275,6 +1278,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6b911390c5825014e8377183a7837d3f, type: 2}
+    - target: {fileID: 5420857361349278248, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: _shoot
+      value: 
+      objectReference: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintSpeed
       value: 8
@@ -1401,10 +1408,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2130638079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d734710ba36cc46adef31bf1ab40ba, type: 3}
+  m_Script: {fileID: 11500000, guid: cc382c70293be03418a33b2e31918640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _currentWeapon: {fileID: 1903102407}
+  _input: {fileID: 7500310714839720154}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

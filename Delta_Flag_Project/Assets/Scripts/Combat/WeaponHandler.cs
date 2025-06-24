@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    [SerializeField] WeaponBehaviour _currentWeapon = null;
+    [SerializeField] protected WeaponBehaviour _currentWeapon = null;
+
+    // init weapon
 
     public void PullTrigger()
     {
