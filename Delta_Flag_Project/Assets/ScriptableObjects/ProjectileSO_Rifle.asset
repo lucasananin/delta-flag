@@ -17,5 +17,5 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  _spawnPositionOffset: {x: 0, y: 0}
-  _moveSpeed: 10
+  _forwardOffset: 0.1
+  _moveSpeed: 99

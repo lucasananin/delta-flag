@@ -29,7 +29,7 @@ public class WeaponStats
 
     public int Damage { get => _damage; private set => _damage = value; }
     public float FireRate { get => _fireRate; private set => _fireRate = value; }
-    public float ShootAngle { get => _shootAngle; set => _shootAngle = value; }
+    public float SpreadAngle { get => _shootAngle; set => _shootAngle = value; }
     public int ProjectilesPerShot { get => _projectilesPerShot; private set => _projectilesPerShot = value; }
     public int AmmoPerShot { get => _ammoPerShot; set => _ammoPerShot = value; }
     public float BurstRate { get => _burstRate; private set => _burstRate = value; }
