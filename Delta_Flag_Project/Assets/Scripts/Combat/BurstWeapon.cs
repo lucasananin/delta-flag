@@ -40,9 +40,10 @@ public class BurstWeapon : WeaponBehaviour
     public override void PullTrigger()
     {
         if (!HasAmmo()) return;
+        if (_isBursting) return;
         if (_nextBurst < _weaponSO.Stats.BurstRate) return;
 
-        _nextBurst -= _weaponSO.Stats.BurstRate;
+        _nextBurst = 0;
         _currentShootCount = 0;
         _isBursting = true;
         base.PullTrigger();
