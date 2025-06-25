@@ -26,12 +26,14 @@ public class WeaponStats
     [SerializeField, Range(0, 45)] float _spreadAngle = 0;
     [SerializeField, Range(1, 12)] int _projectilesPerShot = 1;
     [SerializeField, Range(1, 12)] int _ammoPerShot = 1;
+    [SerializeField, Range(0, 90)] int _magazineSize = 30;
 
-    public int Damage { get => _damage; private set => _damage = value; }
-    public float FireRate { get => _fireRate; private set => _fireRate = value; }
-    public float SpreadAngle { get => _spreadAngle; set => _spreadAngle = value; }
-    public int ProjectilesPerShot { get => _projectilesPerShot; private set => _projectilesPerShot = value; }
-    public int AmmoPerShot { get => _ammoPerShot; set => _ammoPerShot = value; }
-    public float BurstRate { get => _burstRate; private set => _burstRate = value; }
-    public int ShotsPerBurst { get => _shotsPerBurst; set => _shotsPerBurst = value; }
+    public int Damage { get => _damage; }
+    public float FireRate { get => _fireRate; }
+    public float SpreadAngle { get => _spreadAngle; }
+    public int ProjectilesPerShot { get => _projectilesPerShot; }
+    public int AmmoPerShot { get => _ammoPerShot; }
+    public float BurstRate { get => _burstRate; }
+    public int ShotsPerBurst { get => _shotsPerBurst; }
+    public int MagazineSize { get => _magazineSize; }
 }

@@ -73,11 +73,20 @@ public class AmmoHandler : MonoBehaviour
         OnAmmoChanged?.Invoke();
     }
 
-    public bool HasAmmo(ProjectileSO _projectileSO, WeaponSO _weaponSO)
+    public void DecreaseAmmo(ProjectileSO _projectileSO, int _amount)
     {
+        if (_infiniteAmmo) return;
+
         var _model = GetModel(_projectileSO.AmmoSO);
-        return _model is not null && _model.HasEnoughQuantity(_weaponSO.Stats.AmmoPerShot);
+        _model?.DecreaseQuantity(_amount);
+        OnAmmoChanged?.Invoke();
     }
+
+    //public bool HasAmmo(ProjectileSO _projectileSO, WeaponSO _weaponSO)
+    //{
+    //    var _model = GetModel(_projectileSO.AmmoSO);
+    //    return _model is not null && _model.HasEnoughQuantity(_weaponSO.Stats.AmmoPerShot);
+    //}
 
     public int GetAmmoQuantity(ProjectileSO _projectileSO)
     {

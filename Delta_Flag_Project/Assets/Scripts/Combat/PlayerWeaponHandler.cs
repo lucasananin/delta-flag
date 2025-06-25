@@ -21,5 +21,10 @@ public class PlayerWeaponHandler : WeaponHandler
         {
             SwapThroughInput(1);
         }
+
+        if (_input.Reload.action.WasPerformedThisFrame())
+        {
+            Reload();
+        }
     }
 }

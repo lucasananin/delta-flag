@@ -153,4 +153,9 @@ public class WeaponHandler : MonoBehaviour
         yield return new WaitForSeconds(_swapInputDelay);
         _isWaitingSwapDelay = false;
     }
+
+    public void Reload()
+    {
+        _currentWeapon.ReloadMagazine();
+    }
 }

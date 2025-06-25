@@ -9,6 +9,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
     [SerializeField] protected EntityBehaviour _entitySource = null;
     [SerializeField] protected AmmoHandler _ammoHandler = null;
     [SerializeField] protected float _nextFire = 0;
+    [SerializeField] protected int _magazineAmmo = 0;
 
     public WeaponSO WeaponSO { get => _weaponSO; }
 
@@ -21,6 +22,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
     {
         this._ammoHandler = _ammoHandler;
         Init(_entityBehaviour);
+        ReloadMagazine();
     }
 
     public virtual void Init(EntityBehaviour _entityBehaviour)
@@ -88,15 +90,46 @@ public abstract class WeaponBehaviour : MonoBehaviour
         return _weaponSO.Id;
     }
 
+    public void ReloadMagazine()
+    {
+        if (_magazineAmmo >= _weaponSO.Stats.MagazineSize) return;
+
+        var _amountRequired = Mathf.Abs(_magazineAmmo - _weaponSO.Stats.MagazineSize);
+        var _amountAvailable = Mathf.Abs(_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO) - _magazineAmmo);
+
+        if (_amountAvailable <= 0) return;
+
+        if (_amountRequired <= _amountAvailable)
+        {
+            _magazineAmmo += _amountRequired;
+        }
+        else
+        {
+            _magazineAmmo += _amountAvailable;
+        }
+    }
+
+    public Vector2 _ammoString = default;
+
+    private void Update()
+    {
+        var _b = Mathf.Abs(_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO) - _magazineAmmo);
+        _ammoString = new(_magazineAmmo, _b);
+    }
+
     private void DecreaseAmmo(ProjectileSO _projectileSO)
     {
         if (_ammoHandler == null) return;
-        _ammoHandler.DecreaseAmmo(_projectileSO, _weaponSO);
+        _magazineAmmo -= _weaponSO.Stats.AmmoPerShot;
+        _magazineAmmo = Mathf.Clamp(_magazineAmmo, 0, _weaponSO.Stats.MagazineSize);
+        _ammoHandler.DecreaseAmmo(_projectileSO, _weaponSO.Stats.AmmoPerShot);
+        //_ammoHandler.DecreaseAmmo(_projectileSO, _weaponSO);
     }
 
     public bool HasAmmo()
     {
-        return _ammoHandler == null || _ammoHandler.HasAmmo(_weaponSO.ProjectileSO, _weaponSO);
+        return _ammoHandler == null || _magazineAmmo >= _weaponSO.Stats.AmmoPerShot;
+        //return _ammoHandler == null || _ammoHandler.HasAmmo(_weaponSO.ProjectileSO, _weaponSO);
     }
 
     public string GetAmmoString()

@@ -200,6 +200,8 @@ MonoBehaviour:
   _entitySource: {fileID: 0}
   _ammoHandler: {fileID: 0}
   _nextFire: 0
+  _magazineAmmo: 0
+  _ammoString: {x: 0, y: 0}
   _isHoldingTrigger: 0
 --- !u!1 &113737319
 GameObject:
@@ -1257,6 +1259,8 @@ MonoBehaviour:
   _entitySource: {fileID: 0}
   _ammoHandler: {fileID: 0}
   _nextFire: 0
+  _magazineAmmo: 0
+  _ammoString: {x: 0, y: 0}
   _nextBurst: 0
   _currentShootCount: 0
   _isBursting: 0
@@ -1846,6 +1850,10 @@ PrefabInstance:
       propertyPath: _shoot
       value: 
       objectReference: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 5420857361349278248, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: _reload
+      value: 
+      objectReference: {fileID: 5088091584076119721, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintSpeed
       value: 8
@@ -1961,8 +1969,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377411055600ee344ac3233ae76ad4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infiniteAmmo: 1
-  _initialAmmoPercentage: 100
+  _infiniteAmmo: 0
+  _initialAmmoPercentage: 50
   _models:
   - _so: {fileID: 11400000, guid: 7001c633495bb8e48983ba0a3612324f, type: 2}
     _amount: 0
