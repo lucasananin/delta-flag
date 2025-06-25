@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerWeaponHandler : WeaponHandler
 {
+    [Header("// REFERENCES")]
     [SerializeField] StarterAssetsInputs _input = null;
 
     private void Update()

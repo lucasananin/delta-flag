@@ -1,6 +1,4 @@
-using System.Net;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 public abstract class WeaponBehaviour : MonoBehaviour
 {
@@ -11,6 +9,8 @@ public abstract class WeaponBehaviour : MonoBehaviour
     [SerializeField] protected EntityBehaviour _entitySource = null;
     [SerializeField] protected AmmoHandler _ammoHandler = null;
     [SerializeField] protected float _nextFire = 0;
+
+    public WeaponSO WeaponSO { get => _weaponSO; }
 
     protected virtual void Awake()
     {
@@ -44,7 +44,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
     {
         _nextFire = 0;
         PrepareProjectile(_weaponSO.ProjectileSO);
-        //DecreaseAmmo(_weaponSO.ProjectileSO);
+        DecreaseAmmo(_weaponSO.ProjectileSO);
         //OnShoot?.Invoke();
     }
 
@@ -88,16 +88,20 @@ public abstract class WeaponBehaviour : MonoBehaviour
         return _weaponSO.Id;
     }
 
+    private void DecreaseAmmo(ProjectileSO _projectileSO)
+    {
+        if (_ammoHandler == null) return;
+        _ammoHandler.DecreaseAmmo(_projectileSO, _weaponSO);
+    }
+
     public bool HasAmmo()
     {
-        //return _ammoHandler is null ? true : _ammoHandler.HasAmmo(_weaponSO.ProjectileSO, _weaponSO);
-        return true;
+        return _ammoHandler == null || _ammoHandler.HasAmmo(_weaponSO.ProjectileSO, _weaponSO);
     }
 
     public string GetAmmoString()
     {
-        //return _ammoHandler is null ? $"-" : $"{_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO)}";
-        return string.Empty;
+        return _ammoHandler == null ? $"-" : $"{_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO)}";
     }
 
     public int GetDamage()

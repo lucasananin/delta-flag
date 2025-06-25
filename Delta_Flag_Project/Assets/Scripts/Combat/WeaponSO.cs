@@ -3,15 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponSO", menuName = "Scriptable Objects/WeaponSO")]
 public class WeaponSO : ScriptableObject
 {
-    [SerializeField] WeaponBehaviour _weaponPrefab = null;
     [SerializeField] string _id = null;
-    [SerializeField] string _displayName = null;
+    [SerializeField] WeaponBehaviour _weaponPrefab = null;
     [SerializeField] ProjectileSO _projectileSO = null;
     [SerializeField] WeaponStats _stats = null;
 
     public WeaponBehaviour WeaponPrefab { get => _weaponPrefab; private set => _weaponPrefab = value; }
     public string Id { get => _id; private set => _id = value; }
-    public string DisplayName { get => _displayName; private set => _displayName = value; }
     public ProjectileSO ProjectileSO { get => _projectileSO; private set => _projectileSO = value; }
     public WeaponStats Stats { get => _stats; private set => _stats = value; }
 }

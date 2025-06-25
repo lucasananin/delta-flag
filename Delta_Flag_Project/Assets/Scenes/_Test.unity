@@ -166,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &100591554
 Transform:
   m_ObjectHideFlags: 0
@@ -197,8 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponSO: {fileID: 11400000, guid: 7de9ee8bedb9d4443a3e2b80e5883c45, type: 2}
   _muzzle: {fileID: 113737320}
-  _entitySource: {fileID: 7500310714839720169}
-  _ammoHandler: {fileID: 7500310714839720161}
+  _entitySource: {fileID: 0}
+  _ammoHandler: {fileID: 0}
   _nextFire: 0
   _isHoldingTrigger: 0
 --- !u!1 &113737319
@@ -1393,8 +1393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponSO: {fileID: 11400000, guid: 81bfb2908056bd34eb5fb9e4d8743a86, type: 2}
   _muzzle: {fileID: 1811788112}
-  _entitySource: {fileID: 7500310714839720169}
-  _ammoHandler: {fileID: 7500310714839720161}
+  _entitySource: {fileID: 0}
+  _ammoHandler: {fileID: 0}
   _nextFire: 0
   _nextBurst: 0
   _currentShootCount: 0
@@ -1989,6 +1989,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCapsule
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Actions
       value: 
@@ -2089,6 +2093,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377411055600ee344ac3233ae76ad4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _infiniteAmmo: 0
+  _initialAmmoPercentage: 50
+  _models: []
 --- !u!114 &7500310714839720163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,7 +2108,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc382c70293be03418a33b2e31918640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentWeapon: {fileID: 100591555}
+  _entitySource: {fileID: 7500310714839720169}
+  _ammoHandler: {fileID: 0}
+  _maxWeaponsCount: 9
+  _swapInputDelay: 0.3
+  _weaponsList:
+  - {fileID: 100591555}
+  - {fileID: 1903102407}
+  _currentWeapon: {fileID: 0}
+  _currentWeaponIndex: 0
+  _isWaitingSwapDelay: 0
   _input: {fileID: 7500310714839720154}
 --- !u!114 &7500310714839720169
 MonoBehaviour:
