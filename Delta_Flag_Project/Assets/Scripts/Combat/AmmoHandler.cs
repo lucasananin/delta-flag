@@ -4,7 +4,7 @@ using UnityEngine;
 public class AmmoHandler : MonoBehaviour
 {
     [SerializeField] bool _infiniteAmmo = false;
-    [SerializeField, Range(0f, 99f)] int _initialAmmoPercentage = 50;
+    [SerializeField, Range(0f, 100f)] int _initialAmmoPercentage = 50;
     [SerializeField] AmmoModel[] _models = null;
 
     public AmmoModel[] Models { get => _models; private set => _models = value; }
