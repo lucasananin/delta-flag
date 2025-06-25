@@ -16,5 +16,10 @@ public class PlayerWeaponHandler : WeaponHandler
         {
             ReleaseTrigger();
         }
+
+        if (_input.Swap.action.WasPerformedThisFrame())
+        {
+            SwapThroughInput(1);
+        }
     }
 }

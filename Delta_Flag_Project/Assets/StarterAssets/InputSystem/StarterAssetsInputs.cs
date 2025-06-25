@@ -22,8 +22,10 @@ namespace StarterAssets
 
         [Header("// REFERENCES")]
         [SerializeField] InputActionReference _shoot = null;
+        [SerializeField] InputActionReference _swap = null;
 
         public InputActionReference Shoot { get => _shoot; }
+        public InputActionReference Swap { get => _swap; }
 
 #if ENABLE_INPUT_SYSTEM
         public void OnMove(InputValue value)

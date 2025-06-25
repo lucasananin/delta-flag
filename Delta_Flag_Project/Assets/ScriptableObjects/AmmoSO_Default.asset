@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4348be7bb76ba04685941f133839ee7, type: 3}
   m_Name: AmmoSO_Default
   m_EditorClassIdentifier: 
+  _id: Default
+  _maxQuantity: 120
