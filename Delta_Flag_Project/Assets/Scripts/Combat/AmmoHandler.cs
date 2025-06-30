@@ -7,6 +7,7 @@ public class AmmoHandler : MonoBehaviour
     [SerializeField, Range(0f, 100f)] int _initialAmmoPercentage = 50;
     [SerializeField] AmmoModel[] _models = null;
 
+    public bool InfiniteAmmo { get => _infiniteAmmo; }
     public AmmoModel[] Models { get => _models; private set => _models = value; }
 
     public event System.Action OnAmmoChanged = null;

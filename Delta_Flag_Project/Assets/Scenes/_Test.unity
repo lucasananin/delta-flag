@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377411055600ee344ac3233ae76ad4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _infiniteAmmo: 0
+  _infiniteAmmo: 1
   _initialAmmoPercentage: 50
   _models:
   - _so: {fileID: 11400000, guid: 7001c633495bb8e48983ba0a3612324f, type: 2}

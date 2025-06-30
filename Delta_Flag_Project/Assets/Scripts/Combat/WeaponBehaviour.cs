@@ -120,6 +120,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
     private void DecreaseAmmo(ProjectileSO _projectileSO)
     {
         if (_ammoHandler == null) return;
+        if (_ammoHandler.InfiniteAmmo) return;
         _magazineAmmo -= _weaponSO.Stats.AmmoPerShot;
         _magazineAmmo = Mathf.Clamp(_magazineAmmo, 0, _weaponSO.Stats.MagazineSize);
         _ammoHandler.DecreaseAmmo(_projectileSO, _weaponSO.Stats.AmmoPerShot);
@@ -128,7 +129,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
 
     public bool HasAmmo()
     {
-        return _ammoHandler == null || _magazineAmmo >= _weaponSO.Stats.AmmoPerShot;
+        return _ammoHandler == null || _magazineAmmo >= _weaponSO.Stats.AmmoPerShot || _ammoHandler.InfiniteAmmo;
         //return _ammoHandler == null || _ammoHandler.HasAmmo(_weaponSO.ProjectileSO, _weaponSO);
     }
 
