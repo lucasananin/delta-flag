@@ -7,6 +7,7 @@ public class PhysicalProjectile : ProjectileBehaviour
     [SerializeField] Vector3 _lastPosition = default;
 
     [Header("// REFERENCES")]
+    [SerializeField] Rigidbody _rb = null;
     [SerializeField] SphereCollider _dummyCollider = null;
 
     private readonly RaycastHit[] _results = new RaycastHit[9];
@@ -19,8 +20,10 @@ public class PhysicalProjectile : ProjectileBehaviour
 
     private void CheckCollisions()
     {
-        Vector3 displacement = _projectileSO.MoveSpeed * Time.fixedDeltaTime * transform.forward;
-        var _hits = Physics.SphereCastNonAlloc(_lastPosition, _dummyCollider.radius, displacement.normalized, _results, displacement.magnitude, _projectileSO.LayerMask);
+        Vector3 _displacement = _projectileSO.MoveSpeed * Time.fixedDeltaTime * transform.forward;
+        var _hits = Physics.SphereCastNonAlloc(_lastPosition, _dummyCollider.radius, _displacement.normalized, _results, _displacement.magnitude, _projectileSO.LayerMask);
+        var _nextPosition = _rb.position + _displacement;
+        //var _nextPosition = _displacement;
 
         for (int i = 0; i < _hits; i++)
         {
@@ -31,6 +34,8 @@ public class PhysicalProjectile : ProjectileBehaviour
             if (_collidersHit.Contains(_colliderHit)) continue;
             //if (_colliderHit.TryGetComponent(out HealthBehaviour _healthBehaviour) && !HasAvailableTag(_colliderHit.gameObject)) continue;
 
+            //_nextPosition = _raycastHit.point;
+            //_rb.position = _raycastHit.point;
             _collidersHit.Add(_colliderHit);
             //TryDamage(_healthBehaviour, _raycastHit);
             SendRaycastHitEvent(_raycastHit);
@@ -38,8 +43,11 @@ public class PhysicalProjectile : ProjectileBehaviour
             break;
         }
 
+        //if (_hits > 0) return;
         SetLastPosition();
-        transform.position += displacement;
+        _rb.MovePosition(_nextPosition);
+        //_rb.linearVelocity = _projectileSO.MoveSpeed * transform.forward;
+        //transform.position += displacement;
     }
 
     public override void Init(ShootModel _newShootModel)

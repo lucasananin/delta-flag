@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de56e197cc356944997ce3a7a5e6ebbc, type: 3}
-  m_Name: WeaponSO_Rifle
+  m_Name: WeaponSO_Pistol
   m_EditorClassIdentifier: 
   _id: Rifle
   _weaponPrefab: {fileID: 0}
@@ -20,7 +20,7 @@ MonoBehaviour:
     _fireRate: 0.2
     _burstRate: 0.01
     _shotsPerBurst: 1
-    _spreadAngle: 0.5
+    _spreadAngle: 0
     _projectilesPerShot: 1
     _ammoPerShot: 1
     _magazineSize: 20
