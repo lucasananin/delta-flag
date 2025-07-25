@@ -4,7 +4,6 @@ using UnityEngine;
 public class PhysicalProjectile : ProjectileBehaviour
 {
     [SerializeField] List<Collider> _collidersHit = default;
-    //[SerializeField] Vector3 _lastPosition = default;
 
     [Header("// REFERENCES")]
     [SerializeField] Rigidbody _rb = null;
@@ -23,7 +22,6 @@ public class PhysicalProjectile : ProjectileBehaviour
         Vector3 _displacement = _projectileSO.MoveSpeed * Time.fixedDeltaTime * transform.forward;
         var _hits = Physics.SphereCastNonAlloc(transform.position, _dummyCollider.radius, _displacement.normalized, _results, _displacement.magnitude, _projectileSO.LayerMask);
         var _nextPosition = _rb.position + _displacement;
-        //var _nextPosition = _displacement;
 
         for (int i = 0; i < _hits; i++)
         {
@@ -34,8 +32,6 @@ public class PhysicalProjectile : ProjectileBehaviour
             if (_collidersHit.Contains(_colliderHit)) continue;
             //if (_colliderHit.TryGetComponent(out HealthBehaviour _healthBehaviour) && !HasAvailableTag(_colliderHit.gameObject)) continue;
 
-            //_nextPosition = _raycastHit.point;
-            //_rb.position = _raycastHit.point;
             _collidersHit.Add(_colliderHit);
             //TryDamage(_healthBehaviour, _raycastHit);
             SendRaycastHitEvent(_raycastHit);
@@ -44,17 +40,12 @@ public class PhysicalProjectile : ProjectileBehaviour
             return;
         }
 
-        //if (_hits > 0) return;
-        //SetLastPosition();
         _rb.MovePosition(_nextPosition);
-        //_rb.linearVelocity = _projectileSO.MoveSpeed * transform.forward;
-        //transform.position += displacement;
     }
 
     public override void Init(ShootModel _newShootModel)
     {
         base.Init(_newShootModel);
-        //SetLastPosition();
         _collidersHit.Clear();
     }
 
@@ -65,10 +56,5 @@ public class PhysicalProjectile : ProjectileBehaviour
     //    var _damage = _shootModel.GetDamage();
     //    var _damageModel = new DamageModel(_shootModel.EntitySource, _raycastHit.point, _damage);
     //    _healthBehaviour.TakeDamage(_damageModel);
-    //}
-
-    //private void SetLastPosition()
-    //{
-    //    _lastPosition = transform.position;
     //}
 }
