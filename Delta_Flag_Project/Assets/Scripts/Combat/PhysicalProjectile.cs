@@ -4,7 +4,7 @@ using UnityEngine;
 public class PhysicalProjectile : ProjectileBehaviour
 {
     [SerializeField] List<Collider> _collidersHit = default;
-    [SerializeField] Vector3 _lastPosition = default;
+    //[SerializeField] Vector3 _lastPosition = default;
 
     [Header("// REFERENCES")]
     [SerializeField] Rigidbody _rb = null;
@@ -21,7 +21,7 @@ public class PhysicalProjectile : ProjectileBehaviour
     private void CheckCollisions()
     {
         Vector3 _displacement = _projectileSO.MoveSpeed * Time.fixedDeltaTime * transform.forward;
-        var _hits = Physics.SphereCastNonAlloc(_lastPosition, _dummyCollider.radius, _displacement.normalized, _results, _displacement.magnitude, _projectileSO.LayerMask);
+        var _hits = Physics.SphereCastNonAlloc(transform.position, _dummyCollider.radius, _displacement.normalized, _results, _displacement.magnitude, _projectileSO.LayerMask);
         var _nextPosition = _rb.position + _displacement;
         //var _nextPosition = _displacement;
 
@@ -40,11 +40,12 @@ public class PhysicalProjectile : ProjectileBehaviour
             //TryDamage(_healthBehaviour, _raycastHit);
             SendRaycastHitEvent(_raycastHit);
             DestroyThis();
-            break;
+            gameObject.SetActive(false);
+            return;
         }
 
         //if (_hits > 0) return;
-        SetLastPosition();
+        //SetLastPosition();
         _rb.MovePosition(_nextPosition);
         //_rb.linearVelocity = _projectileSO.MoveSpeed * transform.forward;
         //transform.position += displacement;
@@ -53,7 +54,7 @@ public class PhysicalProjectile : ProjectileBehaviour
     public override void Init(ShootModel _newShootModel)
     {
         base.Init(_newShootModel);
-        SetLastPosition();
+        //SetLastPosition();
         _collidersHit.Clear();
     }
 
@@ -66,8 +67,8 @@ public class PhysicalProjectile : ProjectileBehaviour
     //    _healthBehaviour.TakeDamage(_damageModel);
     //}
 
-    private void SetLastPosition()
-    {
-        _lastPosition = transform.position;
-    }
+    //private void SetLastPosition()
+    //{
+    //    _lastPosition = transform.position;
+    //}
 }
