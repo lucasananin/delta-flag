@@ -11,11 +11,16 @@ public class AIPatrol : MonoBehaviour
     [Header("// READONLY")]
     [SerializeField] int _index = 0;
 
-    private void Start()
+    private void Awake()
     {
         transform.position = _points[0].position;
-        StartPatrol();
     }
+
+    //private void Start()
+    //{
+    //    transform.position = _points[0].position;
+    //    StartPatrol();
+    //}
 
     public void StartPatrol()
     {
@@ -29,6 +34,8 @@ public class AIPatrol : MonoBehaviour
 
     public IEnumerator Patrol_Routine()
     {
+        if (_points.Count == 1) yield break;
+
         while (true)
         {
             var _point = _points[_index];

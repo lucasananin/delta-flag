@@ -96,9 +96,10 @@ namespace UOP1.StateMachine.ScriptableObjects
 
             public void UpdateId()
             {
+                if (FromState == null || ToState == null) return;
                 var _fromString = $"{FromState.name}"["State_".Length..];
                 var _toString = $"{ToState.name}"["State_".Length..];
-                editor_id = $"FROM_{_fromString}_TO_{_toString}";
+                editor_id = $"{_fromString} ➤ {_toString}";
             }
         }
 

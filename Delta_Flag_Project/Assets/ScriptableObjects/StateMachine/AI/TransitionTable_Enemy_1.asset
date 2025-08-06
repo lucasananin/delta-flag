@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872cbaa965d1f6e4e98365d74e2060df, type: 3}
+  m_Name: TransitionTable_Enemy_1
+  m_EditorClassIdentifier: 
+  _transitions:
+  - editor_id: "Patrol \u27A4 Alert"
+    FromState: {fileID: 11400000, guid: ebfe7b5301844734aa6813199f212d9b, type: 2}
+    ToState: {fileID: 11400000, guid: a0c81b4fac953374fa28d4e75b474826, type: 2}
+    Conditions:
+    - ExpectedResult: 0
+      Condition: {fileID: 11400000, guid: 6acc928db9c2c5d42922febe919c9313, type: 2}
+      Operator: 0
