@@ -40,7 +40,6 @@ public class AIMover : MonoBehaviour
     {
         var _randomPoint = NavMeshUtils.GetRandomNavMeshPoint(transform.position, 10f);
         SetDestination(_randomPoint);
-        //Debug.Log($"MoveToRandomDestination");
     }
 
     public void SetDestination(Vector3 _position)
