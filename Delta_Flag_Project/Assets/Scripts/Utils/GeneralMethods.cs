@@ -43,6 +43,11 @@ public class GeneralMethods : MonoBehaviour
         return Random.insideUnitCircle.normalized * Random.Range(_min, _max);
     }
 
+    public static Vector3 GetRandomInSphere(float _min, float _max)
+    {
+        return Random.insideUnitSphere.normalized * Random.Range(_min, _max);
+    }
+
     public static List<T> OrderListByDistance<T>(List<T> _list, Vector3 _origin) where T : Component
     {
         _list.Sort(delegate (T _a, T _b)

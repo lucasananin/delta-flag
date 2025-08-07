@@ -175,7 +175,7 @@ Transform:
   m_GameObject: {fileID: 34397516}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 5}
+  m_LocalPosition: {x: 7, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -344,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &311289706
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -804,10 +804,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 65
   _targetEntity: {fileID: 0}
-  _isFleeing: 0
-  _isCowering: 0
-  _isWaitingBullCharge: 0
-  _isBullCharging: 0
   _isTargetOnLineOfSight: 0
   _timeUntilSearchPath: 0
   _searchPathTimer: 0
@@ -1456,7 +1452,7 @@ Transform:
   m_GameObject: {fileID: 1094796128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: 0, z: 12}
+  m_LocalPosition: {x: 5, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1514,7 +1510,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
+  m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1116316910
 MonoBehaviour:
@@ -1530,7 +1526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tags: {fileID: 11400000, guid: ea1f183f4bb912f4c93eca76a15cc4a3, type: 2}
   _sphere: {fileID: 1116316909}
-  _maxDistance: 5
+  _maxDistance: 7
   _viewAngle: 90
   _targets: []
 --- !u!1 &1212720593

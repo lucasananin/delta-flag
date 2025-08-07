@@ -10,10 +10,10 @@ public class AIEntity : EntityBehaviour
 
     [Header("// READONLY")]
     [SerializeField] EntityBehaviour _targetEntity = null;
-    [SerializeField] bool _isFleeing = false;
-    [SerializeField] bool _isCowering = false;
-    [SerializeField] bool _isWaitingBullCharge = false;
-    [SerializeField] bool _isBullCharging = false;
+    //[SerializeField] bool _isFleeing = false;
+    //[SerializeField] bool _isCowering = false;
+    //[SerializeField] bool _isWaitingBullCharge = false;
+    //[SerializeField] bool _isBullCharging = false;
     [SerializeField] bool _isTargetOnLineOfSight = false;
     [SerializeField] float _timeUntilSearchPath = 0f;
     [SerializeField] float _searchPathTimer = 0f;
@@ -21,10 +21,10 @@ public class AIEntity : EntityBehaviour
     private readonly RaycastHit[] _results = new RaycastHit[9];
 
     //public AIPath AiPath { get => _aiPath; private set => _aiPath = value; }
-    public bool IsFleeing { get => _isFleeing; set => _isFleeing = value; }
-    public bool IsCowering { get => _isCowering; set => _isCowering = value; }
-    public bool IsWaitingBullCharge { get => _isWaitingBullCharge; set => _isWaitingBullCharge = value; }
-    public bool IsBullCharging { get => _isBullCharging; set => _isBullCharging = value; }
+    //public bool IsFleeing { get => _isFleeing; set => _isFleeing = value; }
+    //public bool IsCowering { get => _isCowering; set => _isCowering = value; }
+    //public bool IsWaitingBullCharge { get => _isWaitingBullCharge; set => _isWaitingBullCharge = value; }
+    //public bool IsBullCharging { get => _isBullCharging; set => _isBullCharging = value; }
     public bool IsTargetOnLineOfSight { get => _isTargetOnLineOfSight; private set => _isTargetOnLineOfSight = value; }
 
     private void Update()
@@ -63,8 +63,11 @@ public class AIEntity : EntityBehaviour
 
     public Vector3 PickRandomPointNearTarget(Vector2 _minMaxValue)
     {
-        Vector3 _point = GeneralMethods.GetRandomInCircle(_minMaxValue.x, _minMaxValue.y);
-        _point += GetTargetEntityPosition();
+        //Vector3 _point = GeneralMethods.GetRandomInCircle(_minMaxValue.x, _minMaxValue.y);
+        var _point = GeneralMethods.GetRandomInSphere(_minMaxValue.x, _minMaxValue.y);
+        var _targetPosition = GetTargetEntityPosition();
+        _point += _targetPosition;
+        _point.y = _targetPosition.y;
         return _point;
     }
 

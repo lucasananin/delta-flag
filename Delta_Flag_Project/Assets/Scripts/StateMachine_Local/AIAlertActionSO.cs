@@ -22,7 +22,8 @@ public class AIAlertAction : StateAction
 
     public override void OnStateEnter()
     {
-        // change movement speed.
+        var _alertMoveSpeed = 5f;
+        _mover.SetSpeed(_alertMoveSpeed);
         _anim.SetIsAlert(true);
     }
 
@@ -44,6 +45,30 @@ public class AIAlertAction : StateAction
         else
         {
             // if target is not visible, search for a position where he is visible and rotate to movement.
+            var _positionNearTarget = TryGetPositionWhereTargetIsVisible();
+            _mover.SetDestination(_positionNearTarget);
+            _mover.RotateToMovement();
         }
+    }
+
+    private Vector3 TryGetPositionWhereTargetIsVisible()
+    {
+        var _moveRange = new Vector2(1, 2);
+        var _numberOfTries = 10;
+        var _positionNearTarget = _aiEntity.PickRandomPointNearTarget(_moveRange);
+
+        for (int i = 0; i < _numberOfTries; i++)
+        {
+            if (_aiEntity.CanSeeTargetFromPoint(_positionNearTarget))
+            {
+                return _positionNearTarget;
+            }
+            else
+            {
+                _positionNearTarget = _aiEntity.PickRandomPointNearTarget(_moveRange);
+            }
+        }
+
+        return _positionNearTarget;
     }
 }

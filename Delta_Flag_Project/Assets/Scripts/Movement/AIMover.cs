@@ -31,10 +31,10 @@ public class AIMover : MonoBehaviour
     //    }
     //}
 
-    //private void LateUpdate()
-    //{
-    //    RotateToMovement();
-    //}
+    public void SetSpeed(float _newSpeed)
+    {
+        _navAgent.speed = _newSpeed;
+    }
 
     public void MoveToRandomDestination()
     {
@@ -49,7 +49,7 @@ public class AIMover : MonoBehaviour
 
     public void Stop()
     {
-        _navAgent.isStopped = true;
+        _navAgent.ResetPath();
     }
 
     public void RotateToMovement()
