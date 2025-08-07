@@ -11,13 +11,13 @@ public class MoveToTargetActionSO : StateActionSO<MoveToTargetAction>
 
 public class MoveToTargetAction : StateAction
 {
-    private AiEntity _aiEntity = null;
-    private AiEntitySO _aiEntitySO = null;
+    private AIEntity _aiEntity = null;
+    private AIEntitySO _aiEntitySO = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
-        _aiEntity = _stateMachine.GetComponent<AiEntity>();
-        _aiEntitySO = _aiEntity.GetEntitySO<AiEntitySO>();
+        _aiEntity = _stateMachine.GetComponent<AIEntity>();
+        _aiEntitySO = _aiEntity.GetEntitySO<AIEntitySO>();
     }
 
     public override void OnFixedUpdate()

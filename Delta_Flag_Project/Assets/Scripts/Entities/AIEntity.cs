@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AiEntity : EntityBehaviour
+public class AIEntity : EntityBehaviour
 {
     //[SerializeField] AIPath _aiPath = null;
     [SerializeField] NavMeshAgent _navAgent = null;
@@ -18,7 +18,7 @@ public class AiEntity : EntityBehaviour
     [SerializeField] float _timeUntilSearchPath = 0f;
     [SerializeField] float _searchPathTimer = 0f;
 
-    private readonly RaycastHit2D[] _results = new RaycastHit2D[9];
+    private readonly RaycastHit[] _results = new RaycastHit[9];
 
     //public AIPath AiPath { get => _aiPath; private set => _aiPath = value; }
     public bool IsFleeing { get => _isFleeing; set => _isFleeing = value; }
@@ -29,17 +29,12 @@ public class AiEntity : EntityBehaviour
 
     private void Update()
     {
-        //_isTargetOnLineOfSight = HasTargetEntity() && CanSeeTargetFromPoint(transform.position);
+        _isTargetOnLineOfSight = HasTargetEntity() && CanSeeTargetFromPoint(transform.position);
     }
 
     public void SetTargetEntity(EntityBehaviour _entityValue)
     {
         _targetEntity = _entityValue;
-    }
-
-    public bool IsTargetEntity(GameObject _obj)
-    {
-        return _obj == _targetEntity.gameObject;
     }
 
     public bool HasTargetEntity()
@@ -124,24 +119,31 @@ public class AiEntity : EntityBehaviour
 
     public bool CanSeeTargetFromPoint(Vector3 _point)
     {
-        Vector3 _vector = GetTargetEntityPosition() - _point;
-        Vector3 _direction = _vector.normalized;
-        float _distance = _vector.magnitude;
-        int _hits = Physics2D.CircleCastNonAlloc(_point, 0.3f, _direction, _results, _distance, _layerMask);
+        var _vector = GetTargetEntityPosition() - _point + Vector3.up;
+        var _direction = _vector.normalized;
+        var _distance = _vector.magnitude;
+        var _sphereRadius = 0.25f;
+        int _hits = Physics.SphereCastNonAlloc(_point, _sphereRadius, _direction, _results, _distance, _layerMask);
 
         for (int i = 0; i < _hits; i++)
         {
-            Collider2D _colliderHit = _results[i].collider;
+            var _colliderHit = _results[i].collider;
 
-            if (GeneralMethods.HasAvailableTag(_colliderHit.gameObject, _obstacleTags.Tags)) return false;
+            if (_colliderHit.gameObject == gameObject) continue;
+            if (_obstacleTags.HasTag(_colliderHit.gameObject)) return false;
 
-            if (IsTargetEntity(_colliderHit.gameObject))
+            if (_colliderHit.gameObject == _targetEntity.gameObject)
             {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public bool IsTargetEntity(GameObject _gameObject)
+    {
+        return _gameObject == _targetEntity.gameObject;
     }
 
     public bool IsWaitingToSearchPath()
@@ -152,7 +154,7 @@ public class AiEntity : EntityBehaviour
 
     public void ResetTimeUntilSearchPath()
     {
-        Vector2 _minMaxValue = GetEntitySO<AiEntitySO>().MoveRateRange;
+        Vector2 _minMaxValue = GetEntitySO<AIEntitySO>().MoveRateRange;
         _timeUntilSearchPath = Random.Range(_minMaxValue.x, _minMaxValue.y);
         _searchPathTimer = 0;
     }

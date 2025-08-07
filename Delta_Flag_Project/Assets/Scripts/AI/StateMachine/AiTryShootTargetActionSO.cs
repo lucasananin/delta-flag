@@ -11,12 +11,12 @@ public class AiTryShootTargetActionSO : StateActionSO<AiTryShootTargetAction>
 
 public class AiTryShootTargetAction : StateAction
 {
-    private AiEntity _aiEntity = null;
+    private AIEntity _aiEntity = null;
     private AiWeaponHandler _aiWeaponHandler = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
-        _aiEntity = _stateMachine.GetComponent<AiEntity>();
+        _aiEntity = _stateMachine.GetComponent<AIEntity>();
         _aiWeaponHandler = _stateMachine.GetComponent<AiWeaponHandler>();
     }
 

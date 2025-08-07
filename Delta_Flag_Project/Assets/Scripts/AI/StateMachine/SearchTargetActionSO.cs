@@ -19,13 +19,13 @@ public class SearchTargetAction : StateAction
     private new SearchTargetActionSO OriginSO => (SearchTargetActionSO)base.OriginSO;
 
     private StateMachine _stateMachine = null;
-    private AiEntity _aIEntity = null;
+    private AIEntity _aIEntity = null;
     private Collider2D[] _results = new Collider2D[9];
 
     public override void Awake(StateMachine stateMachine)
     {
         _stateMachine = stateMachine;
-        _aIEntity = _stateMachine.GetComponent<AiEntity>();
+        _aIEntity = _stateMachine.GetComponent<AIEntity>();
     }
 
     public override void OnFixedUpdate()

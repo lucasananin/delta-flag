@@ -52,7 +52,7 @@ public class AiWeaponHandler : MonoBehaviour
         }
     }
 
-    public void TryShootAll(AiEntity _aiEntity)
+    public void TryShootAll(AIEntity _aiEntity)
     {
         int _count = _weaponModels.Count;
 

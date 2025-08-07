@@ -1,10 +1,10 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Entity_", menuName = "SO/Entities/AI Entity")]
-public class AiEntitySO : EntitySO
+public class AIEntitySO : EntitySO
 {
     [Header("// General")]
-    [SerializeField] AiEntity _entityPrefab = null;
+    [SerializeField] AIEntity _entityPrefab = null;
     [SerializeField] bool _stopMovingOnClose = true;
     [SerializeField] bool _stopMovingOnTargetAcquired = false;
     [SerializeField] bool _repathOnTargetFarAway = true;
@@ -42,7 +42,7 @@ public class AiEntitySO : EntitySO
     [SerializeField] Vector2 _fleeRange = default;
     [SerializeField] float _fleeDistance = 0f;
 
-    public AiEntity EntityPrefab { get => _entityPrefab; private set => _entityPrefab = value; }
+    public AIEntity EntityPrefab { get => _entityPrefab; private set => _entityPrefab = value; }
     public bool StopMovingOnClose { get => _stopMovingOnClose; private set => _stopMovingOnClose = value; }
     public bool StopMovingOnTargetAcquired { get => _stopMovingOnTargetAcquired; private set => _stopMovingOnTargetAcquired = value; }
     public bool RepathOnTargetFarAway { get => _repathOnTargetFarAway; private set => _repathOnTargetFarAway = value; }

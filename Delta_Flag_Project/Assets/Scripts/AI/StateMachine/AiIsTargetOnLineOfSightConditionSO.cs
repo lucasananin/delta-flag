@@ -11,11 +11,11 @@ public class AiIsTargetOnLineOfSightConditionSO : StateConditionSO<AiIsTargetOnL
 
 public class AiIsTargetOnLineOfSightCondition : Condition
 {
-    private AiEntity _aiEntity = null;
+    private AIEntity _aiEntity = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
-        _aiEntity = _stateMachine.GetComponent<AiEntity>();
+        _aiEntity = _stateMachine.GetComponent<AIEntity>();
     }
 
     protected override bool Statement()

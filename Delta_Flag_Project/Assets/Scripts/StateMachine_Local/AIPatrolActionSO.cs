@@ -9,7 +9,7 @@ public class AIPatrolActionSO : StateActionSO<AIPatrolAction>
 
 public class AIPatrolAction : StateAction
 {
-    private AiEntity _aiEntity = null;
+    private AIEntity _aiEntity = null;
     private AIPatrol _aiPatrol = null;
     private AIMover _mover = null;
     private EntityDetector _detector = null;
@@ -17,7 +17,7 @@ public class AIPatrolAction : StateAction
     public override void Awake(StateMachine _stateMachine)
     {
         _aiPatrol = _stateMachine.GetComponent<AIPatrol>();
-        _aiEntity = _stateMachine.GetComponent<AiEntity>();
+        _aiEntity = _stateMachine.GetComponent<AIEntity>();
         _mover = _stateMachine.GetComponent<AIMover>();
         _detector = _stateMachine.GetComponentInChildren<EntityDetector>();
     }

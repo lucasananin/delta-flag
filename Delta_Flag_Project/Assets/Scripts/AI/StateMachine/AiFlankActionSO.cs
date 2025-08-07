@@ -11,14 +11,14 @@ public class AiFlankActionSO : StateActionSO<AiFlankAction>
 
 public class AiFlankAction : StateAction
 {
-    private AiEntity _aiEntity = null;
-    private AiEntitySO _entitySO = null;
+    private AIEntity _aiEntity = null;
+    private AIEntitySO _entitySO = null;
     private Vector3 _point = default;
 
     public override void Awake(StateMachine _stateMachine)
     {
-        _aiEntity = _stateMachine.GetComponent<AiEntity>();
-        _entitySO = _aiEntity.GetEntitySO<AiEntitySO>();
+        _aiEntity = _stateMachine.GetComponent<AIEntity>();
+        _entitySO = _aiEntity.GetEntitySO<AIEntitySO>();
     }
 
     public override void OnStateEnter()

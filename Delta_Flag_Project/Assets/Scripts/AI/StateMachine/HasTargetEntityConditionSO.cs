@@ -15,11 +15,11 @@ public class HasTargetEntityConditionSO : StateConditionSO
 
 public class HasTargetEntityCondition : Condition
 {
-    private AiEntity _aIEntity = null;
+    private AIEntity _aIEntity = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
-        _aIEntity = _stateMachine.GetComponent<AiEntity>();
+        _aIEntity = _stateMachine.GetComponent<AIEntity>();
     }
 
     protected override bool Statement()

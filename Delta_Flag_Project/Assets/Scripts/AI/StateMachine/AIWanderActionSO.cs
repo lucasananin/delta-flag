@@ -9,15 +9,15 @@ public class AiWanderActionSO : StateActionSO<AiWanderAction>
 
 public class AiWanderAction : StateAction
 {
-    private AiEntity _aiEntity = null;
-    private AiEntitySO _entitySO = null;
+    private AIEntity _aiEntity = null;
+    private AIEntitySO _entitySO = null;
     //private GridGraph _graph = null;
     private const int GRAPH_INDEX = 0;
 
     public override void Awake(StateMachine _stateMachine)
     {
-        _aiEntity = _stateMachine.GetComponent<AiEntity>();
-        _entitySO = _aiEntity.GetEntitySO<AiEntitySO>();
+        _aiEntity = _stateMachine.GetComponent<AIEntity>();
+        _entitySO = _aiEntity.GetEntitySO<AIEntitySO>();
         //_graph = AstarPath.active.data.graphs[GRAPH_INDEX] as GridGraph;
     }
 
