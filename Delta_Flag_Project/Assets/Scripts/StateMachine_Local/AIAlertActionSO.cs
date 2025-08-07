@@ -33,18 +33,21 @@ public class AIAlertAction : StateAction
 
     public override void OnUpdate()
     {
-        if (_aiEntity.IsTargetOnLineOfSight)
+        var _maxTargetDistance = 10f;
+        var _isCloseToTarget = _aiEntity.IsCloseToTargetEntity(_maxTargetDistance);
+
+        if (_aiEntity.IsTargetOnLineOfSight && _isCloseToTarget)
         {
-            // if target is visible, stop movement, rotate to target and start shooting.
             _mover.Stop();
 
             var _targetDirection = (_aiEntity.GetTargetEntityPosition() - _mover.transform.position).normalized;
             _targetDirection.y = 0;
             _mover.RotateTo(_targetDirection);
+
+            // start shooting.
         }
         else
         {
-            // if target is not visible, search for a position where he is visible and rotate to movement.
             var _positionNearTarget = TryGetPositionWhereTargetIsVisible();
             _mover.SetDestination(_positionNearTarget);
             _mover.RotateToMovement();
