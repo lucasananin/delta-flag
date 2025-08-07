@@ -56,13 +56,17 @@ public class AIMover : MonoBehaviour
     {
         if (_navAgent.velocity.sqrMagnitude > _minRotationMagnitude)
         {
-            var _forward = new Vector3(_navAgent.velocity.x, 0, _navAgent.velocity.z).normalized;
+            var _movementDirection = new Vector3(_navAgent.velocity.x, 0, _navAgent.velocity.z).normalized;
+            RotateTo(_movementDirection);
+        }
+    }
 
-            if (_forward != Vector3.zero)
-            {
-                Quaternion _targetRotation = Quaternion.LookRotation(_forward);
-                transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _rotationSpeed);
-            }
+    public void RotateTo(Vector3 _direction)
+    {
+        if (_direction != Vector3.zero)
+        {
+            Quaternion _targetRotation = Quaternion.LookRotation(_direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, _targetRotation, Time.deltaTime * _rotationSpeed);
         }
     }
 
