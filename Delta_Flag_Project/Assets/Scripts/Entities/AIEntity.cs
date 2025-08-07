@@ -29,7 +29,7 @@ public class AiEntity : EntityBehaviour
 
     private void Update()
     {
-        _isTargetOnLineOfSight = HasTargetEntity() && CanSeeTargetFromPoint(transform.position);
+        //_isTargetOnLineOfSight = HasTargetEntity() && CanSeeTargetFromPoint(transform.position);
     }
 
     public void SetTargetEntity(EntityBehaviour _entityValue)

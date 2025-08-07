@@ -31,10 +31,10 @@ public class AIMover : MonoBehaviour
     //    }
     //}
 
-    private void LateUpdate()
-    {
-        RotateToMovement();
-    }
+    //private void LateUpdate()
+    //{
+    //    RotateToMovement();
+    //}
 
     public void MoveToRandomDestination()
     {
@@ -45,6 +45,11 @@ public class AIMover : MonoBehaviour
     public void SetDestination(Vector3 _position)
     {
         _navAgent.SetDestination(_position);
+    }
+
+    public void Stop()
+    {
+        _navAgent.isStopped = true;
     }
 
     public void RotateToMovement()

@@ -9,15 +9,15 @@ public class AIHasTargetEntityConditionSO : StateConditionSO<AIHasTargetEntityCo
 
 public class AIHasTargetEntityCondition : Condition
 {
-    private EntityDetector _detector = null;
+    private AiEntity _aiEntity = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
-        _detector = _stateMachine.GetComponentInChildren<EntityDetector>();
+        _aiEntity = _stateMachine.GetComponent<AiEntity>();
     }
 
     protected override bool Statement()
     {
-        return _detector.HasTargetWithin();
+        return _aiEntity.HasTargetEntity();
     }
 }

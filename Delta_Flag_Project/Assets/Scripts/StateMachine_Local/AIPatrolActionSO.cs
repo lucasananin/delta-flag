@@ -9,11 +9,17 @@ public class AIPatrolActionSO : StateActionSO<AIPatrolAction>
 
 public class AIPatrolAction : StateAction
 {
+    private AiEntity _aiEntity = null;
     private AIPatrol _aiPatrol = null;
+    private AIMover _mover = null;
+    private EntityDetector _detector = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
         _aiPatrol = _stateMachine.GetComponent<AIPatrol>();
+        _aiEntity = _stateMachine.GetComponent<AiEntity>();
+        _mover = _stateMachine.GetComponent<AIMover>();
+        _detector = _stateMachine.GetComponentInChildren<EntityDetector>();
     }
 
     public override void OnStateEnter()
@@ -28,11 +34,16 @@ public class AIPatrolAction : StateAction
 
     public override void OnFixedUpdate()
     {
-        //throw new System.NotImplementedException();
     }
 
     public override void OnUpdate()
     {
-        //throw new System.NotImplementedException();
+        if (!_aiEntity.HasTargetEntity() && _detector.HasTargetWithin(out GameObject _targetFound))
+        {
+            var _entity = _targetFound.GetComponent<EntityBehaviour>();
+            _aiEntity.SetTargetEntity(_entity);
+        }
+
+        _mover.RotateToMovement();
     }
 }

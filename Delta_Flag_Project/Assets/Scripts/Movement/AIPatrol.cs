@@ -16,12 +16,6 @@ public class AIPatrol : MonoBehaviour
         transform.position = _points[0].position;
     }
 
-    //private void Start()
-    //{
-    //    transform.position = _points[0].position;
-    //    StartPatrol();
-    //}
-
     public void StartPatrol()
     {
         StartCoroutine(Patrol_Routine());

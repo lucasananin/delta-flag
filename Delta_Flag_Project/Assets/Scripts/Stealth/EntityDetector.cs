@@ -16,15 +16,7 @@ public class EntityDetector : MonoBehaviour
         _sphere.radius = _maxDistance;
     }
 
-    //private void Update()
-    //{
-    //    if (HasTargetWithin())
-    //    {
-    //        transform.localScale = Vector3.one * 1.5f;
-    //    }
-    //}
-
-    public bool HasTargetWithin()
+    public bool HasTargetWithin(out GameObject _targetFound)
     {
         int _count = _targets.Count;
 
@@ -36,9 +28,11 @@ public class EntityDetector : MonoBehaviour
             float _dot = Vector3.Dot(transform.forward, _directionToTarget);
             float _threshold = Mathf.Cos(_viewAngle * 0.5f * Mathf.Deg2Rad);
 
+            _targetFound = _target;
             return _dot > _threshold;
         }
 
+        _targetFound = null;
         return false;
     }
 

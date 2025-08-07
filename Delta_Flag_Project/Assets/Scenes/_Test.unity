@@ -644,6 +644,7 @@ GameObject:
   - component: {fileID: 588563117}
   - component: {fileID: 588563119}
   - component: {fileID: 588563123}
+  - component: {fileID: 588563124}
   - component: {fileID: 588563120}
   - component: {fileID: 588563121}
   - component: {fileID: 588563122}
@@ -783,6 +784,33 @@ MonoBehaviour:
     appendConditionsInfo: 1
     appendActionsInfo: 1
     currentState: 
+--- !u!114 &588563124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588563116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289c9c11b8fe79246950d965cc3e5fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entitySO: {fileID: 0}
+  _healthBehaviour: {fileID: 0}
+  _navAgent: {fileID: 0}
+  _obstacleTags: {fileID: 0}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _targetEntity: {fileID: 0}
+  _isFleeing: 0
+  _isCowering: 0
+  _isWaitingBullCharge: 0
+  _isBullCharging: 0
+  _isTargetOnLineOfSight: 0
+  _timeUntilSearchPath: 0
+  _searchPathTimer: 0
 --- !u!1001 &635755469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2926,6 +2954,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7500310714839720175}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7500310714839720181}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!114 &7500310714839720154 stripped
 MonoBehaviour:
@@ -2995,8 +3026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f3e9c756df64b479d6ac67f95f217d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entitySO: {fileID: 0}
-  _healthBehaviour: {fileID: 0}
+  _entitySO: {fileID: 11400000, guid: e65aa420932a2234882c4c1897c85c23, type: 2}
+  _healthBehaviour: {fileID: 7500310714839720181}
 --- !u!114 &7500310714839720175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3004,7 +3035,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130638079}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f4cbc30ffc9cdf4083fa99fbefecf16, type: 3}
   m_Name: 
@@ -3017,6 +3048,27 @@ MonoBehaviour:
   _maxDistance: 1.2
   _anim: {fileID: 635755474}
   _isHolding: 0
+--- !u!114 &7500310714839720181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130638079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee36d604781e2994aa5145b692a8232e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isInvincible: 0
+  _maxHealth: 100
+  _deathDelay: 0
+  _currentHealth: 0
+  _isDying: 0
+  _lastDamageModel:
+    _entitySource: {fileID: 0}
+    _pointHit: {x: 0, y: 0, z: 0}
+    _value: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
