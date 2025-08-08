@@ -50,7 +50,7 @@ public class AIAlertAction : StateAction
             var _targetDirection = (_aiEntity.GetTargetEntityPosition() - _mover.transform.position).normalized;
             _targetDirection.y = 0;
             _mover.RotateTo(_targetDirection);
-            _weaponHandler.TryShootAll(_aiEntity);
+            _weaponHandler.TryShootAll();
         }
         else
         {

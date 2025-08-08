@@ -19,18 +19,7 @@ public class AIWeaponHandler : MonoBehaviour
         }
     }
 
-    public void StopShooting()
-    {
-        StopAllCoroutines();
-
-        int _count = _weaponModels.Count;
-        for (int i = 0; i < _count; i++)
-        {
-            _weaponModels[i].StopShooting();
-        }
-    }
-
-    public void TryShootAll(AIEntity _aiEntity)
+    public void TryShootAll(/*AIEntity _aiEntity*/)
     {
         int _count = _weaponModels.Count;
 
@@ -38,11 +27,11 @@ public class AIWeaponHandler : MonoBehaviour
         {
             var _model = _weaponModels[i];
 
-            if (_model.ResetTimeOnLostTarget && !_aiEntity.IsTargetOnLineOfSight)
-            {
-                _model.ResetTime();
-                continue;
-            }
+            //if (_model.ResetTimeOnLostTarget && !_aiEntity.IsTargetOnLineOfSight)
+            //{
+            //    _model.ResetTime();
+            //    continue;
+            //}
 
             if (_model.IsShooting) continue;
             if (!_model.IsShootable()) continue;
@@ -76,6 +65,18 @@ public class AIWeaponHandler : MonoBehaviour
         yield return new WaitForSeconds(_waitTime);
 
         _model.IsShooting = false;
+    }
+
+    public void StopShooting()
+    {
+        StopAllCoroutines();
+
+        int _count = _weaponModels.Count;
+        for (int i = 0; i < _count; i++)
+        {
+            _weaponModels[i].StopShooting();
+            _weaponModels[i].ResetTime();
+        }
     }
 
     public List<WeaponBehaviour> GetAllWeapons()

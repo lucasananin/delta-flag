@@ -6,7 +6,6 @@ public class AIWeaponModel
 {
     [SerializeField] List<WeaponBehaviour> _weapons = null;
     [SerializeField] Vector2 _shootRateRange = default;
-    [SerializeField] bool _resetTimeOnLostTarget = false;
 
     [Header("// READONLY")]
     [SerializeField] bool _isShooting = false;
@@ -14,7 +13,6 @@ public class AIWeaponModel
     [SerializeField] float _shootTimer = 0f;
 
     public bool IsShooting { get => _isShooting; set => _isShooting = value; }
-    public bool ResetTimeOnLostTarget { get => _resetTimeOnLostTarget; }
     public List<WeaponBehaviour> Weapons { get => _weapons; }
 
     public void InitWeapons(EntityBehaviour _entitySource)

@@ -830,7 +830,7 @@ MonoBehaviour:
   _weaponModels:
   - _weapons:
     - {fileID: 36578332}
-    _shootRateRange: {x: 0.5, y: 1}
+    _shootRateRange: {x: 0.6, y: 1.2}
     _resetTimeOnLostTarget: 0
     _isShooting: 0
     _timeUntilShoot: 0
