@@ -12,14 +12,14 @@ public class AIAlertAction : StateAction
     private AIEntity _aiEntity = null;
     private AIMover _mover = null;
     private AIAnim _anim = null;
-    private AIWeaponHandler _weapon = null;
+    private AIWeaponHandler _weaponHandler = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
         _aiEntity = _stateMachine.GetComponent<AIEntity>();
         _mover = _stateMachine.GetComponent<AIMover>();
         _anim = _stateMachine.GetComponent<AIAnim>();
-        _weapon = _stateMachine.GetComponent<AIWeaponHandler>();
+        _weaponHandler = _stateMachine.GetComponent<AIWeaponHandler>();
     }
 
     public override void OnStateEnter()
@@ -27,6 +27,12 @@ public class AIAlertAction : StateAction
         var _alertMoveSpeed = 5f;
         _mover.SetSpeed(_alertMoveSpeed);
         _anim.SetIsAlert(true);
+        SetShootTriggerAnim(true);
+    }
+
+    public override void OnStateExit()
+    {
+        SetShootTriggerAnim(false);
     }
 
     public override void OnFixedUpdate()
@@ -44,11 +50,11 @@ public class AIAlertAction : StateAction
             var _targetDirection = (_aiEntity.GetTargetEntityPosition() - _mover.transform.position).normalized;
             _targetDirection.y = 0;
             _mover.RotateTo(_targetDirection);
-            _weapon.TryShootAll(_aiEntity);
+            _weaponHandler.TryShootAll(_aiEntity);
         }
         else
         {
-            _weapon.StopShooting();
+            _weaponHandler.StopShooting();
             var _positionNearTarget = TryGetPositionWhereTargetIsVisible();
             _mover.SetDestination(_positionNearTarget);
             _mover.RotateToMovement();
@@ -74,5 +80,18 @@ public class AIAlertAction : StateAction
         }
 
         return _positionNearTarget;
+    }
+
+    private void SetShootTriggerAnim(bool _subscribe)
+    {
+        var _weapons = _weaponHandler.GetAllWeapons();
+        int _count = _weapons.Count;
+        for (int i = 0; i < _count; i++)
+        {
+            if (_subscribe)
+                _anim.SubscribeShoot(_weapons[i]);
+            else
+                _anim.UnsubscribeShoot(_weapons[i]);
+        }
     }
 }

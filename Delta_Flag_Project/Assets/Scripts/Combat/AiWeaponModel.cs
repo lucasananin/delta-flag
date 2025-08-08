@@ -15,11 +15,11 @@ public class AIWeaponModel
 
     public bool IsShooting { get => _isShooting; set => _isShooting = value; }
     public bool ResetTimeOnLostTarget { get => _resetTimeOnLostTarget; }
+    public List<WeaponBehaviour> Weapons { get => _weapons; }
 
     public void InitWeapons(EntityBehaviour _entitySource)
     {
         int _count = _weapons.Count;
-
         for (int i = 0; i < _count; i++)
         {
             _weapons[i].Init(_entitySource);

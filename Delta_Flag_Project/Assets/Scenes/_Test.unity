@@ -830,7 +830,7 @@ MonoBehaviour:
   _weaponModels:
   - _weapons:
     - {fileID: 36578332}
-    _shootRateRange: {x: 1, y: 1.5}
+    _shootRateRange: {x: 0.5, y: 1}
     _resetTimeOnLostTarget: 0
     _isShooting: 0
     _timeUntilShoot: 0
@@ -1541,7 +1541,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1116316910
 MonoBehaviour:
@@ -1561,7 +1561,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 65
-  _maxDistance: 10
+  _maxDistance: 7
   _viewAngle: 90
   _targets: []
 --- !u!4 &1241983845 stripped

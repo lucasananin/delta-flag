@@ -44,10 +44,11 @@ public class AIWeaponHandler : MonoBehaviour
                 continue;
             }
 
-            _model.IncreaseTime();
-
             if (_model.IsShooting) continue;
             if (!_model.IsShootable()) continue;
+
+            _model.IncreaseTime();
+
             if (!_model.HasEnoughFireTime()) continue;
             //if (!_model.CanShootWhileMoving && _aiEntity.IsMoving()) continue;
             //if (!_aiEntity.IsCloseToTargetEntity(_model.ShootDistance)) continue;
@@ -75,5 +76,18 @@ public class AIWeaponHandler : MonoBehaviour
         yield return new WaitForSeconds(_waitTime);
 
         _model.IsShooting = false;
+    }
+
+    public List<WeaponBehaviour> GetAllWeapons()
+    {
+        var _list = new List<WeaponBehaviour>();
+        int _count = _weaponModels.Count;
+
+        for (int i = 0; i < _count; i++)
+        {
+            _list.AddRange(_weaponModels[i].Weapons);
+        }
+
+        return _list;
     }
 }
