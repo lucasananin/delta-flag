@@ -12,6 +12,19 @@ public class WeaponSO : ScriptableObject
     public string Id { get => _id; private set => _id = value; }
     public ProjectileSO ProjectileSO { get => _projectileSO; private set => _projectileSO = value; }
     public WeaponStats Stats { get => _stats; private set => _stats = value; }
+
+    public float GetPullTriggerTotalTime()
+    {
+        float _offset = 0.1f;
+        return /*_stats.ChargeTime + */_offset;
+    }
+
+    public float GetTimeUntilAnotherShot()
+    {
+        float _totalFireRate = _stats.ShotsPerBurst > 0 ? _stats.FireRate * _stats.ShotsPerBurst : _stats.FireRate;
+        float _offset = 0.1f;
+        return _totalFireRate + _stats.BurstRate + _offset;
+    }
 }
 
 [System.Serializable]

@@ -11,7 +11,7 @@ public class AIPatrol : MonoBehaviour
     [Header("// READONLY")]
     [SerializeField] int _index = 0;
 
-    private void Awake()
+    public void TeleportToFirstPosition()
     {
         transform.position = _points[0].position;
     }

@@ -134,11 +134,7 @@ public class AIEntity : EntityBehaviour
 
             if (_colliderHit.gameObject == gameObject) continue;
             if (_obstacleTags.HasTag(_colliderHit.gameObject)) return false;
-
-            if (_colliderHit.gameObject == _targetEntity.gameObject)
-            {
-                return true;
-            }
+            if (_colliderHit.gameObject == _targetEntity.gameObject) return true;
         }
 
         return false;

@@ -12,12 +12,14 @@ public class AIAlertAction : StateAction
     private AIEntity _aiEntity = null;
     private AIMover _mover = null;
     private AIAnim _anim = null;
+    private AIWeaponHandler _weapon = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
         _aiEntity = _stateMachine.GetComponent<AIEntity>();
         _mover = _stateMachine.GetComponent<AIMover>();
         _anim = _stateMachine.GetComponent<AIAnim>();
+        _weapon = _stateMachine.GetComponent<AIWeaponHandler>();
     }
 
     public override void OnStateEnter()
@@ -44,10 +46,12 @@ public class AIAlertAction : StateAction
             _targetDirection.y = 0;
             _mover.RotateTo(_targetDirection);
 
-            // start shooting.
+            _weapon.TryShootAll(_aiEntity);
         }
         else
         {
+            // fix: cancel shooting. (stop shoot couroutine, release trigger).
+
             var _positionNearTarget = TryGetPositionWhereTargetIsVisible();
             _mover.SetDestination(_positionNearTarget);
             _mover.RotateToMovement();

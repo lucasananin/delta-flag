@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class AiWeaponModel
+public class AIWeaponModel
 {
     [SerializeField] List<WeaponBehaviour> _weapons = null;
     [SerializeField] Vector2 _shootRateRange = default;

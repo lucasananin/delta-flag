@@ -20,6 +20,8 @@ public class AIPatrolAction : StateAction
         _aiEntity = _stateMachine.GetComponent<AIEntity>();
         _mover = _stateMachine.GetComponent<AIMover>();
         _detector = _stateMachine.GetComponentInChildren<EntityDetector>();
+
+        _aiPatrol.TeleportToFirstPosition();
     }
 
     public override void OnStateEnter()

@@ -18,6 +18,14 @@ public abstract class WeaponBehaviour : MonoBehaviour
         _nextFire = _weaponSO.Stats.FireRate;
     }
 
+    //public Vector2 _ammoString = default;
+
+    //private void Update()
+    //{
+    //    var _b = Mathf.Abs(_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO) - _magazineAmmo);
+    //    _ammoString = new(_magazineAmmo, _b);
+    //}
+
     public virtual void Init(EntityBehaviour _entityBehaviour, AmmoHandler _ammoHandler)
     {
         this._ammoHandler = _ammoHandler;
@@ -69,9 +77,12 @@ public abstract class WeaponBehaviour : MonoBehaviour
         return _position;
     }
 
+    [SerializeField] bool _isAI = false;
+    [SerializeField] Transform _alignmentOrigin = null;
+
     private Quaternion GenerateRotation()
     {
-        var _cameraTransform = Camera.main.transform;
+        var _cameraTransform = _isAI ? _alignmentOrigin : Camera.main.transform;
         var _ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
         var _targetPoint = Physics.Raycast(_ray, out RaycastHit hit, 999) ? hit.point : _ray.GetPoint(999);
         var _direction = (_targetPoint - _muzzle.position).normalized;
@@ -83,6 +94,16 @@ public abstract class WeaponBehaviour : MonoBehaviour
         _direction = _spreadRotation * _direction;
 
         return Quaternion.LookRotation(_direction);
+    }
+
+    public float GetPullTriggerTotalTime()
+    {
+        return _weaponSO.GetPullTriggerTotalTime();
+    }
+
+    public float GetTimeUntilAnotherShot()
+    {
+        return /*_overheatTimer + */_weaponSO.GetTimeUntilAnotherShot();
     }
 
     public string GetId()
@@ -107,14 +128,6 @@ public abstract class WeaponBehaviour : MonoBehaviour
         {
             _magazineAmmo += _amountAvailable;
         }
-    }
-
-    public Vector2 _ammoString = default;
-
-    private void Update()
-    {
-        var _b = Mathf.Abs(_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO) - _magazineAmmo);
-        _ammoString = new(_magazineAmmo, _b);
     }
 
     private void DecreaseAmmo(ProjectileSO _projectileSO)
