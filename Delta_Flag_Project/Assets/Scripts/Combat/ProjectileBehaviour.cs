@@ -20,7 +20,7 @@ public abstract class ProjectileBehaviour : MonoBehaviour
     //public event System.Action OnDestroy_Stop = null;
     //public event System.Action OnExplode = null;
 
-    const string PROJECTILE_TAG = "Projectile";
+    //const string PROJECTILE_TAG = "Projectile";
 
     public ShootModel ShootModel { get => _shootModel; }
     public float TimeUntilDestroy { get => _timeUntilDestroy; }

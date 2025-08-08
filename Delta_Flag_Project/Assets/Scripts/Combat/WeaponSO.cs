@@ -15,14 +15,14 @@ public class WeaponSO : ScriptableObject
 
     public float GetPullTriggerTotalTime()
     {
-        float _offset = 0.1f;
-        return /*_stats.ChargeTime + */_offset;
+        var _offset = 0.1f;
+        return _offset;
     }
 
     public float GetTimeUntilAnotherShot()
     {
-        float _totalFireRate = _stats.ShotsPerBurst > 0 ? _stats.FireRate * _stats.ShotsPerBurst : _stats.FireRate;
-        float _offset = 0.1f;
+        var _totalFireRate = _stats.FireRate * _stats.ShotsPerBurst;
+        var _offset = 0.1f;
         return _totalFireRate + _stats.BurstRate + _offset;
     }
 }

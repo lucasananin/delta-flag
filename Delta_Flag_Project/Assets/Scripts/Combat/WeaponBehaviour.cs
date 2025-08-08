@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class WeaponBehaviour : MonoBehaviour
 {
     [SerializeField] protected WeaponSO _weaponSO = null;
     [SerializeField] protected Transform _muzzle = null;
+    [SerializeField] protected Transform _alignmentOrigin = null;
 
     [Header("// READONLY")]
     [SerializeField] protected EntityBehaviour _entitySource = null;
@@ -11,20 +13,17 @@ public abstract class WeaponBehaviour : MonoBehaviour
     [SerializeField] protected float _nextFire = 0;
     [SerializeField] protected int _magazineAmmo = 0;
 
+    public event UnityAction<WeaponBehaviour> OnInit = null;
+    public event UnityAction OnShoot = null;
+    public event UnityAction OnPullTrigger = null;
+    public event UnityAction OnReleaseTrigger = null;
+
     public WeaponSO WeaponSO { get => _weaponSO; }
 
     protected virtual void Awake()
     {
         _nextFire = _weaponSO.Stats.FireRate;
     }
-
-    //public Vector2 _ammoString = default;
-
-    //private void Update()
-    //{
-    //    var _b = Mathf.Abs(_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO) - _magazineAmmo);
-    //    _ammoString = new(_magazineAmmo, _b);
-    //}
 
     public virtual void Init(EntityBehaviour _entityBehaviour, AmmoHandler _ammoHandler)
     {
@@ -36,18 +35,18 @@ public abstract class WeaponBehaviour : MonoBehaviour
     public virtual void Init(EntityBehaviour _entityBehaviour)
     {
         _entitySource = _entityBehaviour;
-        //OnInit?.Invoke(this);
+        OnInit?.Invoke(this);
     }
 
 
     public virtual void PullTrigger()
     {
-        //Debug.Log($"{gameObject.name} Pull", this);
+        OnPullTrigger?.Invoke();
     }
 
     public virtual void ReleaseTrigger()
     {
-        //Debug.Log($"{gameObject.name} Release", this);
+        OnReleaseTrigger?.Invoke();
     }
 
     public virtual void Shoot()
@@ -55,7 +54,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
         _nextFire = 0;
         PrepareProjectile(_weaponSO.ProjectileSO);
         DecreaseAmmo(_weaponSO.ProjectileSO);
-        //OnShoot?.Invoke();
+        OnShoot?.Invoke();
     }
 
     private void PrepareProjectile(ProjectileSO _projectileSO)
@@ -64,8 +63,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
         {
             var _position = GeneratePosition(_projectileSO);
             var _rotation = GenerateRotation();
-            //var _parent = _entitySource.transform;
-            var _projectile = Instantiate(_projectileSO.Prefab, _position, _rotation/*, _parent*/);
+            var _projectile = Instantiate(_projectileSO.Prefab, _position, _rotation);
             var _shootModel = new ShootModel(_entitySource, this, _projectileSO);
             _projectile.Init(_shootModel);
         }
@@ -77,13 +75,10 @@ public abstract class WeaponBehaviour : MonoBehaviour
         return _position;
     }
 
-    [SerializeField] bool _isAI = false;
-    [SerializeField] Transform _alignmentOrigin = null;
-
     private Quaternion GenerateRotation()
     {
-        var _cameraTransform = _isAI ? _alignmentOrigin : Camera.main.transform;
-        var _ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+        var _alignmentTransform = _alignmentOrigin == null ? _alignmentOrigin : Camera.main.transform;
+        var _ray = new Ray(_alignmentTransform.position, _alignmentTransform.forward);
         var _targetPoint = Physics.Raycast(_ray, out RaycastHit hit, 999) ? hit.point : _ray.GetPoint(999);
         var _direction = (_targetPoint - _muzzle.position).normalized;
 
@@ -103,7 +98,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
 
     public float GetTimeUntilAnotherShot()
     {
-        return /*_overheatTimer + */_weaponSO.GetTimeUntilAnotherShot();
+        return _weaponSO.GetTimeUntilAnotherShot();
     }
 
     public string GetId()
@@ -137,13 +132,11 @@ public abstract class WeaponBehaviour : MonoBehaviour
         _magazineAmmo -= _weaponSO.Stats.AmmoPerShot;
         _magazineAmmo = Mathf.Clamp(_magazineAmmo, 0, _weaponSO.Stats.MagazineSize);
         _ammoHandler.DecreaseAmmo(_projectileSO, _weaponSO.Stats.AmmoPerShot);
-        //_ammoHandler.DecreaseAmmo(_projectileSO, _weaponSO);
     }
 
     public bool HasAmmo()
     {
         return _ammoHandler == null || _magazineAmmo >= _weaponSO.Stats.AmmoPerShot || _ammoHandler.InfiniteAmmo;
-        //return _ammoHandler == null || _ammoHandler.HasAmmo(_weaponSO.ProjectileSO, _weaponSO);
     }
 
     public string GetAmmoString()
@@ -155,4 +148,11 @@ public abstract class WeaponBehaviour : MonoBehaviour
     {
         return _weaponSO.Stats.Damage;
     }
+
+    //public Vector2 _ammoString = default;
+    //private void Update()
+    //{
+    //    var _totalAmmo = Mathf.Abs(_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO) - _magazineAmmo);
+    //    _ammoString = new(_magazineAmmo, _totalAmmo);
+    //}
 }
