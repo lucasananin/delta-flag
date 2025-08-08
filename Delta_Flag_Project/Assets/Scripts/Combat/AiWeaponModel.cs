@@ -52,4 +52,16 @@ public class AIWeaponModel
         int _randomIndex = Random.Range(0, _weapons.Count);
         return _weapons[_randomIndex];
     }
+
+    public void StopShooting()
+    {
+        _isShooting = false;
+
+        int _count = _weapons.Count;
+        for (int i = 0; i < _count; i++)
+        {
+            _weapons[i].ReleaseTrigger();
+            _weapons[i].ForceStop();
+        }
+    }
 }

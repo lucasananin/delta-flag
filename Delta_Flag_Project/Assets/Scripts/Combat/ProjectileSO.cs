@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProjectileSO", menuName = "Scriptable Objects/ProjectileSO")]
+[CreateAssetMenu(fileName = "Projectile_", menuName = "Scriptable Objects/ProjectileSO")]
 public class ProjectileSO : ScriptableObject
 {
     [SerializeField] ProjectileBehaviour _prefab = null;

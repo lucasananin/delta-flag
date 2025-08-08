@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de56e197cc356944997ce3a7a5e6ebbc, type: 3}
-  m_Name: WeaponSO_MachineGun
+  m_Name: Weapon_MachineGun
   m_EditorClassIdentifier: 
   _id: Machine Gun
   _weaponPrefab: {fileID: 0}

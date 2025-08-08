@@ -12,12 +12,21 @@ public class AIWeaponHandler : MonoBehaviour
     private void Awake()
     {
         int _count = _weaponModels.Count;
-
         for (int i = 0; i < _count; i++)
         {
-            var _model = _weaponModels[i];
-            _model.ResetTime();
-            _model.InitWeapons(_entitySource);
+            _weaponModels[i].ResetTime();
+            _weaponModels[i].InitWeapons(_entitySource);
+        }
+    }
+
+    public void StopShooting()
+    {
+        StopAllCoroutines();
+
+        int _count = _weaponModels.Count;
+        for (int i = 0; i < _count; i++)
+        {
+            _weaponModels[i].StopShooting();
         }
     }
 

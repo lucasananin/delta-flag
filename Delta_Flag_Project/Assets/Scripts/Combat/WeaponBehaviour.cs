@@ -77,7 +77,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
 
     private Quaternion GenerateRotation()
     {
-        var _alignmentTransform = _alignmentOrigin == null ? _alignmentOrigin : Camera.main.transform;
+        var _alignmentTransform = _alignmentOrigin != null ? _alignmentOrigin : Camera.main.transform;
         var _ray = new Ray(_alignmentTransform.position, _alignmentTransform.forward);
         var _targetPoint = Physics.Raycast(_ray, out RaycastHit hit, 999) ? hit.point : _ray.GetPoint(999);
         var _direction = (_targetPoint - _muzzle.position).normalized;
@@ -147,6 +147,10 @@ public abstract class WeaponBehaviour : MonoBehaviour
     public int GetDamage()
     {
         return _weaponSO.Stats.Damage;
+    }
+
+    public virtual void ForceStop()
+    {
     }
 
     //public Vector2 _ammoString = default;

@@ -53,4 +53,9 @@ public class BurstWeapon : WeaponBehaviour
     {
         base.ReleaseTrigger();
     }
+
+    public override void ForceStop()
+    {
+        _isBursting = false;
+    }
 }
