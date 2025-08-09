@@ -32,6 +32,8 @@ public class AIAlertAction : StateAction
 
     public override void OnStateExit()
     {
+        _mover.Stop();
+        _weaponHandler.StopShooting();
         SetShootTriggerAnim(false);
     }
 

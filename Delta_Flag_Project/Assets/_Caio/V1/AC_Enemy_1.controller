@@ -23,10 +23,10 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -4561500974069943964}
   m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
+  m_SpeedParameter: Velocity
+  m_MirrorParameter: IsAlert
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: Velocity
 --- !u!1101 &-4955485243140371445
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
