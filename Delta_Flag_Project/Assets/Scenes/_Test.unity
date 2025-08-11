@@ -254,6 +254,8 @@ MonoBehaviour:
   _duration: 0.05
   _maxAngle: 15
   _angleOffset: 45
+  _scaleRange: {x: 0.8, y: 1.2}
+  _defaultScale: {x: 0, y: 0, z: 0}
 --- !u!1 &100591553
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +342,8 @@ MonoBehaviour:
   _duration: 0.05
   _maxAngle: 10
   _angleOffset: 45
+  _scaleRange: {x: 0.8, y: 1}
+  _defaultScale: {x: 0, y: 0, z: 0}
 --- !u!1 &113737319
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +797,7 @@ GameObject:
   - component: {fileID: 588563121}
   - component: {fileID: 588563122}
   - component: {fileID: 588563125}
+  - component: {fileID: 588563126}
   m_Layer: 6
   m_Name: Enemy_Base
   m_TagString: Enemy
@@ -942,8 +947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289c9c11b8fe79246950d965cc3e5fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entitySO: {fileID: 0}
-  _healthBehaviour: {fileID: 0}
+  _entitySO: {fileID: 11400000, guid: a0a8aa2b558e1f94ba8a070ddb64d6be, type: 2}
+  _healthBehaviour: {fileID: 588563126}
   _navAgent: {fileID: 588563119}
   _obstacleTags: {fileID: 11400000, guid: d7e1515aac2d00e43863aa107a6d0ca2, type: 2}
   _layerMask:
@@ -973,6 +978,27 @@ MonoBehaviour:
     _isShooting: 0
     _timeUntilShoot: 0
     _shootTimer: 0
+--- !u!114 &588563126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588563116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53de6d04baff28a429f4a7b7d6d3b958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isInvincible: 0
+  _maxHealth: 100
+  _deathDelay: 0
+  _currentHealth: 0
+  _isDying: 0
+  _lastDamageModel:
+    _entitySource: {fileID: 0}
+    _pointHit: {x: 0, y: 0, z: 0}
+    _value: 0
 --- !u!1001 &635755469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3366,7 +3392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee36d604781e2994aa5145b692a8232e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isInvincible: 0
+  _isInvincible: 1
   _maxHealth: 100
   _deathDelay: 0
   _currentHealth: 0
@@ -3391,7 +3417,7 @@ SceneRoots:
   - {fileID: 2508214884003609931}
   - {fileID: 569441120}
   - {fileID: 1451501451}
-  - {fileID: 7500310714839720153}
   - {fileID: 669599029}
+  - {fileID: 7500310714839720153}
   - {fileID: 588563118}
   - {fileID: 1522831007}

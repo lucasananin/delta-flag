@@ -8,7 +8,7 @@ public abstract class ProjectileBehaviour : MonoBehaviour
     [SerializeField] protected ProjectileSO _projectileSO = null;
     [SerializeField] protected float _timeUntilDestroy = 0f;
     [SerializeField] protected float _destroyTimer = 0f;
-    [SerializeField] protected List<string> _tagsList = null;
+    //[SerializeField] protected List<string> _tagsList = null;
 
     //private Collider2D[] _explosionResults = new Collider2D[9];
     //private RaycastHit2D[] _obstacleResults = new RaycastHit2D[9];

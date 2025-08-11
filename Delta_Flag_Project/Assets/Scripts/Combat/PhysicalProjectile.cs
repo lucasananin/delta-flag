@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PhysicalProjectile : ProjectileBehaviour
 {
-    [SerializeField] List<Collider> _collidersHit = default;
+    //[SerializeField] List<Collider> _collidersHit = default;
 
     [Header("// REFERENCES")]
     [SerializeField] Rigidbody _rb = null;
@@ -29,11 +28,11 @@ public class PhysicalProjectile : ProjectileBehaviour
             var _colliderHit = _raycastHit.collider;
 
             if (HasHitSource(_colliderHit.gameObject)) continue;
-            if (_collidersHit.Contains(_colliderHit)) continue;
-            //if (_colliderHit.TryGetComponent(out HealthBehaviour _healthBehaviour) && !HasAvailableTag(_colliderHit.gameObject)) continue;
+            //if (_collidersHit.Contains(_colliderHit)) continue;
+            if (_colliderHit.TryGetComponent(out HealthBehaviour _healthBehaviour) && !_shootModel.EntitySource.HasOpponentTag(_colliderHit.gameObject)) continue;
 
-            _collidersHit.Add(_colliderHit);
-            //TryDamage(_healthBehaviour, _raycastHit);
+            //_collidersHit.Add(_colliderHit);
+            TryDamage(_healthBehaviour, _raycastHit);
             SendRaycastHitEvent(_raycastHit);
             DestroyThis();
             gameObject.SetActive(false);
@@ -43,18 +42,18 @@ public class PhysicalProjectile : ProjectileBehaviour
         _rb.MovePosition(_nextPosition);
     }
 
-    public override void Init(ShootModel _newShootModel)
-    {
-        base.Init(_newShootModel);
-        _collidersHit.Clear();
-    }
-
-    //private void TryDamage(HealthBehaviour _healthBehaviour, RaycastHit2D _raycastHit)
+    //public override void Init(ShootModel _newShootModel)
     //{
-    //    if (_healthBehaviour is null) return;
-
-    //    var _damage = _shootModel.GetDamage();
-    //    var _damageModel = new DamageModel(_shootModel.EntitySource, _raycastHit.point, _damage);
-    //    _healthBehaviour.TakeDamage(_damageModel);
+    //    base.Init(_newShootModel);
+    //    _collidersHit.Clear();
     //}
+
+    private void TryDamage(HealthBehaviour _healthBehaviour, RaycastHit _raycastHit)
+    {
+        if (_healthBehaviour == null) return;
+
+        var _damage = _shootModel.GetDamage();
+        var _damageModel = new DamageModel(_shootModel.EntitySource, _raycastHit.point, _damage);
+        _healthBehaviour.TakeDamage(_damageModel);
+    }
 }

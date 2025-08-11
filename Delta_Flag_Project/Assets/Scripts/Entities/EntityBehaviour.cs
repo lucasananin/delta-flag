@@ -15,15 +15,20 @@ public abstract class EntityBehaviour : MonoBehaviour
         return _healthBehaviour.IsAlive();
     }
 
-    public string[] GetOpponentTags()
+    public bool HasOpponentTag(GameObject _gameobject)
     {
-        return _entitySO.OpponentTags.Tags;
+        return _entitySO.OpponentTags.HasTag(_gameobject);
     }
 
-    public string[] GetProjectileHitTags()
-    {
-        return _entitySO.ProjectileHitTags.Tags;
-    }
+    //public string[] GetOpponentTags()
+    //{
+    //    return _entitySO.OpponentTags.Tags;
+    //}
+
+    //public string[] GetProjectileHitTags()
+    //{
+    //    return _entitySO.ProjectileHitTags.Tags;
+    //}
 
     public abstract bool IsMoving();
 }
