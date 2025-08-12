@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1714733913003904d92c07a383096fc3, type: 3}
-  m_Name: Action_AI_Stagging
+  m_Script: {fileID: 11500000, guid: 35432205b9a6a374bbbfe6b7cac92179, type: 3}
+  m_Name: State_Staggering
   m_EditorClassIdentifier: 
-  description: 
+  _actions:
+  - {fileID: 11400000, guid: 302f0dfa9b9156046930650d9c55c870, type: 2}

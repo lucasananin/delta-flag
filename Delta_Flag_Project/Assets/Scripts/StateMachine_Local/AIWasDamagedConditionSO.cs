@@ -2,12 +2,12 @@ using UnityEngine;
 using UOP1.StateMachine;
 using UOP1.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(fileName = "Condition_AI_HasTakenDamage", menuName = "SO/State Machines/Conditions/AI Has Taken Damage")]
-public class AIHasTakenDamageConditionSO : StateConditionSO<AIHasTakenDamageCondition>
+[CreateAssetMenu(fileName = "Condition_AI_WasDamaged", menuName = "SO/State Machines/Conditions/AI Was Damaged")]
+public class AIWasDamagedConditionSO : StateConditionSO<AIWasDamagedCondition>
 {
 }
 
-public class AIHasTakenDamageCondition : Condition
+public class AIWasDamagedCondition : Condition
 {
     private HealthBehaviour _health = null;
 

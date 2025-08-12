@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 845590df68c22104999dddf0f374cfc9, type: 3}
-  m_Name: Condition_AI_HasTakenDamage
+  m_Script: {fileID: 11500000, guid: 1714733913003904d92c07a383096fc3, type: 3}
+  m_Name: Action_AI_Stagger
   m_EditorClassIdentifier: 
+  description: 

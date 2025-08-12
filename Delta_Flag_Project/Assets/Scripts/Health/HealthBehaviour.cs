@@ -10,11 +10,11 @@ public abstract class HealthBehaviour : MonoBehaviour
     [SerializeField] protected int _currentHealth = 0;
     //[SerializeField] protected bool _isDying = false;
     [SerializeField] protected bool _wasDamagedThisFrame = false;
-    [SerializeField] protected bool _isStagging = false;
+    [SerializeField] protected bool _isStaggering = false;
     [SerializeField] protected DamageModel _lastDamageModel = null;
 
     public bool WasDamagedThisFrame { get => _wasDamagedThisFrame; }
-    public bool IsStagging { get => _isStagging; set => _isStagging = value; }
+    public bool IsStaggering { get => _isStaggering; set => _isStaggering = value; }
     public DamageModel LastDamageModel { get => _lastDamageModel; private set => _lastDamageModel = value; }
 
     public event System.Action OnDamageTaken = null;

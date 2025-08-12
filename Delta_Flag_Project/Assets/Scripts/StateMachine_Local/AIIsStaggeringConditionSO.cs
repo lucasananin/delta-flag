@@ -2,12 +2,12 @@ using UnityEngine;
 using UOP1.StateMachine;
 using UOP1.StateMachine.ScriptableObjects;
 
-[CreateAssetMenu(fileName = "Condition_AI_IsStagging", menuName = "SO/State Machines/Conditions/AI Is Stagging")]
-public class AIIsStaggingConditionSO : StateConditionSO<AIIsStaggingCondition>
+[CreateAssetMenu(fileName = "Condition_AI_IsStaggering", menuName = "SO/State Machines/Conditions/AI Is Staggering")]
+public class AIIsStaggeringConditionSO : StateConditionSO<AIIsStaggeringCondition>
 {
 }
 
-public class AIIsStaggingCondition : Condition
+public class AIIsStaggeringCondition : Condition
 {
     private HealthBehaviour _health = null;
 
@@ -18,6 +18,6 @@ public class AIIsStaggingCondition : Condition
 
     protected override bool Statement()
     {
-        return _health.IsStagging;
+        return _health.IsStaggering;
     }
 }

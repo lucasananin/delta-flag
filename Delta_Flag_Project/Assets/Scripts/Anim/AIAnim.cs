@@ -8,6 +8,7 @@ public class AIAnim : MonoBehaviour
     private readonly int VELOCITY_HASH = Animator.StringToHash("Velocity");
     private readonly int IS_ALERT_HASH = Animator.StringToHash("IsAlert");
     private readonly int SHOOT_TRIGGER = Animator.StringToHash("Shoot");
+    private readonly int STAGGER_TRIGGER = Animator.StringToHash("Stagger");
 
     private void LateUpdate()
     {
@@ -32,5 +33,10 @@ public class AIAnim : MonoBehaviour
     public void UnsubscribeShoot(WeaponBehaviour _weapon)
     {
         _weapon.OnShoot -= TriggerShoot;
+    }
+
+    public void TriggerStag()
+    {
+        _anim.SetTrigger(STAGGER_TRIGGER);
     }
 }
