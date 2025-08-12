@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35432205b9a6a374bbbfe6b7cac92179, type: 3}
-  m_Name: State_TakingDamage
+  m_Name: State_Stagging
   m_EditorClassIdentifier: 
   _actions:
-  - {fileID: 11400000, guid: c81ffc5855dae5241a1e5036a373a7c9, type: 2}
+  - {fileID: 11400000, guid: 302f0dfa9b9156046930650d9c55c870, type: 2}

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public abstract class HealthBehaviour : MonoBehaviour
@@ -11,9 +10,11 @@ public abstract class HealthBehaviour : MonoBehaviour
     [SerializeField] protected int _currentHealth = 0;
     //[SerializeField] protected bool _isDying = false;
     [SerializeField] protected bool _wasDamagedThisFrame = false;
+    [SerializeField] protected bool _isStagging = false;
     [SerializeField] protected DamageModel _lastDamageModel = null;
 
     public bool WasDamagedThisFrame { get => _wasDamagedThisFrame; }
+    public bool IsStagging { get => _isStagging; set => _isStagging = value; }
     public DamageModel LastDamageModel { get => _lastDamageModel; private set => _lastDamageModel = value; }
 
     public event System.Action OnDamageTaken = null;
@@ -89,19 +90,6 @@ public abstract class HealthBehaviour : MonoBehaviour
         OnDamageTaken?.Invoke();
     }
 
-    private void Die()
-    {
-        OnDead_();
-        //if (_deathDelay > 0)
-        //{
-        //    StartCoroutine(Dead_routine());
-        //}
-        //else
-        //{
-        //    OnDead_();
-        //}
-    }
-
     public bool IsAlive()
     {
         return _currentHealth > 0;
@@ -111,6 +99,19 @@ public abstract class HealthBehaviour : MonoBehaviour
     {
         return _currentHealth / (_maxHealth * 1f);
     }
+
+    //private void Die()
+    //{
+    //    OnDead_();
+    //    //if (_deathDelay > 0)
+    //    //{
+    //    //    StartCoroutine(Dead_routine());
+    //    //}
+    //    //else
+    //    //{
+    //    //    OnDead_();
+    //    //}
+    //}
 
     //private IEnumerator Dead_routine()
     //{

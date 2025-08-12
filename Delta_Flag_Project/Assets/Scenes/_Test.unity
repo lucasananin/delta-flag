@@ -1021,9 +1021,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isInvincible: 0
   _maxHealth: 100
-  _deathDelay: 0
   _currentHealth: 0
-  _isDying: 0
+  _wasDamagedThisFrame: 0
   _lastDamageModel:
     _entitySource: {fileID: 0}
     _pointHit: {x: 0, y: 0, z: 0}
@@ -1832,7 +1831,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 65
-  _maxDistance: 10
+  _maxDistance: 7
   _viewAngle: 90
   _targets: []
 --- !u!4 &1241983845 stripped
@@ -3581,9 +3580,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isInvincible: 1
   _maxHealth: 100
-  _deathDelay: 0
   _currentHealth: 0
-  _isDying: 0
+  _wasDamagedThisFrame: 0
   _lastDamageModel:
     _entitySource: {fileID: 0}
     _pointHit: {x: 0, y: 0, z: 0}
