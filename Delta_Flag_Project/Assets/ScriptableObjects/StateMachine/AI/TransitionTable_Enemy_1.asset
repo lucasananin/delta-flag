@@ -20,3 +20,24 @@ MonoBehaviour:
     - ExpectedResult: 0
       Condition: {fileID: 11400000, guid: e7ae0e077fd6c3a428ed2697c07e591f, type: 2}
       Operator: 0
+  - editor_id: "Patrol \u27A4 TakingDamage"
+    FromState: {fileID: 11400000, guid: ebfe7b5301844734aa6813199f212d9b, type: 2}
+    ToState: {fileID: 11400000, guid: c9b5f624a09c0f94d889be32208b5083, type: 2}
+    Conditions:
+    - ExpectedResult: 0
+      Condition: {fileID: 11400000, guid: 6744298df241a3f4c86a39086344e127, type: 2}
+      Operator: 0
+  - editor_id: "Alert \u27A4 TakingDamage"
+    FromState: {fileID: 11400000, guid: a0c81b4fac953374fa28d4e75b474826, type: 2}
+    ToState: {fileID: 11400000, guid: c9b5f624a09c0f94d889be32208b5083, type: 2}
+    Conditions:
+    - ExpectedResult: 0
+      Condition: {fileID: 11400000, guid: 6744298df241a3f4c86a39086344e127, type: 2}
+      Operator: 0
+  - editor_id: "TakingDamage \u27A4 Alert"
+    FromState: {fileID: 11400000, guid: c9b5f624a09c0f94d889be32208b5083, type: 2}
+    ToState: {fileID: 11400000, guid: a0c81b4fac953374fa28d4e75b474826, type: 2}
+    Conditions:
+    - ExpectedResult: 0
+      Condition: {fileID: 11400000, guid: 6744298df241a3f4c86a39086344e127, type: 2}
+      Operator: 0
