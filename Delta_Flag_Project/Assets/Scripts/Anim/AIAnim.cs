@@ -9,6 +9,8 @@ public class AIAnim : MonoBehaviour
     private readonly int IS_ALERT_HASH = Animator.StringToHash("IsAlert");
     private readonly int SHOOT_TRIGGER = Animator.StringToHash("Shoot");
     private readonly int STAGGER_TRIGGER = Animator.StringToHash("Stagger");
+    private readonly int DIE_TRIGGER = Animator.StringToHash("Die");
+    private readonly int DEAD_INDEX = Animator.StringToHash("DeadIndex");
 
     private void LateUpdate()
     {
@@ -38,5 +40,12 @@ public class AIAnim : MonoBehaviour
     public void TriggerStag()
     {
         _anim.SetTrigger(STAGGER_TRIGGER);
+    }
+
+    internal void TriggerDead()
+    {
+        var _index = Random.Range(0, 4);
+        _anim.SetInteger(DEAD_INDEX, _index);
+        _anim.SetTrigger(DIE_TRIGGER);
     }
 }

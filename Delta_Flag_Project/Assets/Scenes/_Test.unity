@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isInvincible: 0
-  _maxHealth: 10
+  _maxHealth: 5
   _currentHealth: 0
   _wasDamagedThisFrame: 0
   _isStaggering: 0

@@ -9,8 +9,20 @@ public class AIDeadActionSO : StateActionSO<AIDeadAction>
 
 public class AIDeadAction : StateAction
 {
-    // disable collider.
-    // play animation.
+    private AIAnim _anim = null;
+    private Collider _collider = null;
+
+    public override void Awake(StateMachine _stateMachine)
+    {
+        _anim = _stateMachine.GetComponent<AIAnim>();
+        _collider = _stateMachine.GetComponent<Collider>();
+    }
+
+    public override void OnStateEnter()
+    {
+        _collider.enabled = false;
+        _anim.TriggerDead();
+    }
 
     public override void OnFixedUpdate()
     {
