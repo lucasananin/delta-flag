@@ -22,17 +22,9 @@ public class HitVfx : MonoBehaviour
 
     private void SpawnVfx(RaycastHit _hitInfo)
     {
-        //if (_hitInfo.collider.TryGetComponent(out TakeHitVfxSpawner _takeHitVfx))
-        //{
-        //    _takeHitVfx.SpawnVfx(_hitInfo);
-        //}
-        //else
-        //{
-        //    var _i = Instantiate(_hitVfx, _hitInfo.point, Quaternion.identity);
-        //    _i.transform.right = _hitInfo.normal;
-        //}
-
-        var _i = Instantiate(_hitVfx, _hitInfo.point, Quaternion.identity);
-        _i.transform.forward = _hitInfo.normal;
+        var _holder = _hitInfo.collider.GetComponent<HitVfxHolder>();
+        var _prefab = _holder == null ? _hitVfx : _holder.Prefab;
+        var _instance = Instantiate(_prefab, _hitInfo.point, Quaternion.identity);
+        _instance.transform.forward = _hitInfo.normal;
     }
 }
