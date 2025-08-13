@@ -606,7 +606,7 @@ MonoBehaviour:
     _entitySource: {fileID: 0}
     _weaponSource: {fileID: 0}
     _projectileSO: {fileID: 0}
-  _projectileSO: {fileID: 11400000, guid: 44df14fd6324cc34e96e120307747b1f, type: 2}
+  _projectileSO: {fileID: 0}
   _timeUntilDestroy: 0
   _destroyTimer: 0
   _rb: {fileID: -5052779712957467670}
@@ -624,4 +624,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileBehaviour: {fileID: 2145395115268892069}
-  _hitVfx: {fileID: 4937104475131621792, guid: dc92a2e85f67e4b4d98bfb36ffa75912, type: 3}
+  _hitVfx: {fileID: 4937104475131621792, guid: e22b582c4ecf49148914d085ba528504, type: 3}
