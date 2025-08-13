@@ -41,3 +41,10 @@ MonoBehaviour:
     - ExpectedResult: 1
       Condition: {fileID: 11400000, guid: 309ea41ba755d6f44af5f004068f6b8f, type: 2}
       Operator: 0
+  - editor_id: "Staggering \u27A4 Dead"
+    FromState: {fileID: 11400000, guid: c9b5f624a09c0f94d889be32208b5083, type: 2}
+    ToState: {fileID: 11400000, guid: ef4f9c31ff6f4904ba90d8d8e2987d1a, type: 2}
+    Conditions:
+    - ExpectedResult: 0
+      Condition: {fileID: 11400000, guid: a61428bca376642489ec6a8d0519d9f5, type: 2}
+      Operator: 0

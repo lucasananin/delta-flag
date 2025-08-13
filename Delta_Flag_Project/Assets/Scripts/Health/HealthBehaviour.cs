@@ -46,6 +46,8 @@ public abstract class HealthBehaviour : MonoBehaviour
 
     public void TakeDamage(DamageModel _damageModel)
     {
+        if (!IsAlive()) return;
+
         _lastDamageModel = _damageModel;
         _currentHealth -= _damageModel.Value;
 

@@ -10,6 +10,6 @@ public class EnemyHealth : HealthBehaviour
     {
         base.OnDead_();
         OnAnyAiDead?.Invoke(this);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }
