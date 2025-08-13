@@ -4,11 +4,9 @@ public abstract class HealthBehaviour : MonoBehaviour
 {
     [SerializeField] protected bool _isInvincible = false;
     [SerializeField] protected int _maxHealth = 100;
-    //[SerializeField] protected float _deathDelay = 0f;
 
     [Header("// READONLY")]
     [SerializeField] protected int _currentHealth = 0;
-    //[SerializeField] protected bool _isDying = false;
     [SerializeField] protected bool _wasDamagedThisFrame = false;
     [SerializeField] protected bool _isStaggering = false;
     [SerializeField] protected DamageModel _lastDamageModel = null;
@@ -31,19 +29,6 @@ public abstract class HealthBehaviour : MonoBehaviour
         _wasDamagedThisFrame = false;
     }
 
-    //[ContextMenu("TakeDamage()")]
-    //public void TakeDamage()
-    //{
-    //    var _damageModel = new DamageModel(null, transform.position, 1);
-    //    TakeDamage(_damageModel);
-    //}
-
-    //public void ForceDie()
-    //{
-    //    var _damageModel = new DamageModel(null, transform.position, _currentHealth);
-    //    TakeDamage(_damageModel);
-    //}
-
     public void TakeDamage(DamageModel _damageModel)
     {
         if (!IsAlive()) return;
@@ -54,9 +39,8 @@ public abstract class HealthBehaviour : MonoBehaviour
         if (_isInvincible)
             RestoreAllHealth();
 
-        if (_currentHealth <= 0 /*&& !_isDying*/)
+        if (_currentHealth <= 0)
         {
-            //Die();
             OnDead_();
         }
         else
@@ -67,7 +51,6 @@ public abstract class HealthBehaviour : MonoBehaviour
 
     public void RestoreAllHealth()
     {
-        //_isDying = false;
         RestoreHealth(999);
     }
 
@@ -81,7 +64,7 @@ public abstract class HealthBehaviour : MonoBehaviour
 
     protected virtual void OnDead_()
     {
-        //_isDying = true;
+        _wasDamagedThisFrame = true;
         _currentHealth = 0;
         OnDead?.Invoke();
     }
@@ -101,23 +84,4 @@ public abstract class HealthBehaviour : MonoBehaviour
     {
         return _currentHealth / (_maxHealth * 1f);
     }
-
-    //private void Die()
-    //{
-    //    OnDead_();
-    //    //if (_deathDelay > 0)
-    //    //{
-    //    //    StartCoroutine(Dead_routine());
-    //    //}
-    //    //else
-    //    //{
-    //    //    OnDead_();
-    //    //}
-    //}
-
-    //private IEnumerator Dead_routine()
-    //{
-    //    yield return new WaitForSeconds(_deathDelay);
-    //    OnDead_();
-    //}
 }
