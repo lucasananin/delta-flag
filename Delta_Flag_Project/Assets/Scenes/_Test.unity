@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 100591555}
   - component: {fileID: 100591556}
   - component: {fileID: 100591557}
+  - component: {fileID: 100591558}
   m_Layer: 0
   m_Name: Weapon_MachineGun
   m_TagString: Untagged
@@ -431,6 +432,27 @@ MonoBehaviour:
   _angleOffset: 45
   _scaleRange: {x: 0.8, y: 1}
   _defaultScale: {x: 0, y: 0, z: 0}
+--- !u!114 &100591558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100591553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6994f08d05953854b916aabcde61a744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 100591554}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _maxPushback: 2
+  _pushbackSpeed: 10
+  _checkDistance: 1
+  _checkRadius: 0.2
+  _defaultLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &113737319
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,7 +974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &588563117
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3953,9 +3975,9 @@ MonoBehaviour:
   _maxWeaponsCount: 9
   _swapInputDelay: 0.3
   _weaponsList:
-  - {fileID: 1953814730}
-  - {fileID: 1903102407}
   - {fileID: 100591555}
+  - {fileID: 1903102407}
+  - {fileID: 1953814730}
   _currentWeapon: {fileID: 0}
   _currentWeaponIndex: 0
   _isWaitingSwapDelay: 0

@@ -2,45 +2,35 @@ using UnityEngine;
 
 public class WeaponPushback : MonoBehaviour
 {
-    public Transform weaponTransform; // Reference to weapon or arms
-    public float maxPushback = 0.3f;  // How far back weapon can be pushed
-    public float pushbackSpeed = 10f; // How fast it moves back/forward
-    public float checkDistance = 1f;  // Distance to start pushing back
-    public LayerMask wallMask;        // Only collide with walls or environment
+    [SerializeField] Transform _transform = null;
+    [SerializeField] LayerMask _layerMask = default;
+    [SerializeField] float _maxPushback = 2f;
+    [SerializeField] float _pushbackSpeed = 50f;
+    [SerializeField] float _checkDistance = 1f;
+    [SerializeField] float _checkRadius = 0.2f;
 
-    private Vector3 defaultLocalPosition;
+    [Header("// READONLY")]
+    [SerializeField] Vector3 _defaultLocalPosition;
 
-    void Start()
+    private void Awake()
     {
-        if (weaponTransform == null)
-            weaponTransform = transform;
-
-        defaultLocalPosition = weaponTransform.localPosition;
+        _defaultLocalPosition = _transform.localPosition;
     }
 
-    void Update()
+    private void LateUpdate()
     {
-        // Raycast from camera forward
-        Vector3 cameraPos = Camera.main.transform.position;
-        Vector3 cameraForward = Camera.main.transform.forward;
+        var _cameraTransform = Camera.main.transform;
+        var _cameraPos = _cameraTransform.position;
+        var _cameraForward = _cameraTransform.forward;
+        var _pushbackAmount = 0f;
 
-        float pushbackAmount = 0f;
-
-        //if (Physics.Raycast(cameraPos, cameraForward, out RaycastHit hit, checkDistance, wallMask))
-        if (Physics.SphereCast(cameraPos, 0.2f, cameraForward, out RaycastHit hit, checkDistance, wallMask))
+        if (Physics.SphereCast(_cameraPos, _checkRadius, _cameraForward, out RaycastHit hit, _checkDistance, _layerMask))
         {
-            float distance = hit.distance;
-            pushbackAmount = Mathf.Clamp(checkDistance - distance, 0f, maxPushback);
+            float _distance = hit.distance;
+            _pushbackAmount = Mathf.Clamp(_checkDistance - _distance, 0f, _maxPushback);
         }
 
-        // Target position with pushback
-        Vector3 targetLocalPos = defaultLocalPosition - new Vector3(0f, 0f, pushbackAmount);
-
-        // Smoothly move the weapon
-        weaponTransform.localPosition = Vector3.Lerp(
-            weaponTransform.localPosition,
-            targetLocalPos,
-            Time.deltaTime * pushbackSpeed
-        );
+        var _targetLocalPos = _defaultLocalPosition - new Vector3(0f, 0f, _pushbackAmount);
+        _transform.localPosition = Vector3.MoveTowards(_transform.localPosition, _targetLocalPos, Time.deltaTime * _pushbackSpeed);
     }
 }

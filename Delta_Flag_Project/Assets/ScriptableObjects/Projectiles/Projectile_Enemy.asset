@@ -17,5 +17,5 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 65
-  _forwardOffset: 0.1
+  _forwardOffset: 0
   _moveSpeed: 99
