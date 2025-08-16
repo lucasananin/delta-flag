@@ -18,7 +18,7 @@ public class PhysicalProjectile : ProjectileBehaviour
 
     private void CheckCollisions()
     {
-        Vector3 _displacement = _projectileSO.MoveSpeed * Time.fixedDeltaTime * transform.forward;
+        var _displacement = _projectileSO.MoveSpeed * Time.fixedDeltaTime * transform.forward;
         var _hits = Physics.SphereCastNonAlloc(transform.position, _dummyCollider.radius, _displacement.normalized, _results, _displacement.magnitude, _projectileSO.LayerMask);
         var _nextPosition = _rb.position + _displacement;
 
@@ -35,7 +35,7 @@ public class PhysicalProjectile : ProjectileBehaviour
             TryDamage(_healthBehaviour, _raycastHit);
             SendRaycastHitEvent(_raycastHit);
             DestroyThis();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             return;
         }
 
