@@ -148,8 +148,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3733209670310657933}
-  - component: {fileID: -5052779712957467670}
-  - component: {fileID: 721166621617528080}
+  - component: {fileID: -1961495666715237310}
+  - component: {fileID: 6758814568272640840}
   - component: {fileID: 2145395115268892069}
   - component: {fileID: 8996598694389175974}
   m_Layer: 0
@@ -175,7 +175,7 @@ Transform:
   - {fileID: 1731979220615325527}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &-5052779712957467670
+--- !u!54 &-1961495666715237310
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,7 +202,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &721166621617528080
+--- !u!135 &6758814568272640840
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,8 +242,8 @@ MonoBehaviour:
   _projectileSO: {fileID: 0}
   _timeUntilDestroy: 0
   _destroyTimer: 0
-  _rb: {fileID: -5052779712957467670}
-  _dummyCollider: {fileID: 721166621617528080}
+  _rb: {fileID: -1961495666715237310}
+  _dummyCollider: {fileID: 6758814568272640840}
 --- !u!114 &8996598694389175974
 MonoBehaviour:
   m_ObjectHideFlags: 0

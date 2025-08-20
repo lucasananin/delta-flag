@@ -21,6 +21,7 @@ public class PhysicalProjectile : ProjectileBehaviour
         var _displacement = _projectileSO.MoveSpeed * Time.fixedDeltaTime * transform.forward;
         var _hits = Physics.SphereCastNonAlloc(transform.position, _dummyCollider.radius, _displacement.normalized, _results, _displacement.magnitude, _projectileSO.LayerMask);
         var _nextPosition = _rb.position + _displacement;
+        //var _nextPosition = transform.position + _displacement;
 
         for (int i = 0; i < _hits; i++)
         {
@@ -40,6 +41,7 @@ public class PhysicalProjectile : ProjectileBehaviour
         }
 
         _rb.MovePosition(_nextPosition);
+        //transform.position += _displacement;
     }
 
     //public override void Init(ShootModel _newShootModel)

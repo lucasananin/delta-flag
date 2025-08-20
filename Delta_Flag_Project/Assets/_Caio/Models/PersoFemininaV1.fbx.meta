@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0253ab8ea61e737408393d6bbdb920ef
+guid: 63f2d53923d901e46bd344d1dd29f905
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetralhadoraMaterial
-    second: {fileID: 2100000, guid: ae1945e7739c8914397a097ce4f4ace0, type: 2}
+      name: Inimiga1.002
+    second: {fileID: 2100000, guid: 6553d7baa8b4ce44ca9a87e3e6519b31, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: PersonagemUmMaterial
-    second: {fileID: 2100000, guid: 2f068395034cd254b8bf84be764586ef, type: 2}
+      name: Inimiga1.003
+    second: {fileID: 2100000, guid: 6553d7baa8b4ce44ca9a87e3e6519b31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetralhadoraMaterial
+    second: {fileID: 2100000, guid: ae1945e7739c8914397a097ce4f4ace0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -128,7 +133,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: ShootRifle_High
+      name: Shoot_RifleHigh
       takeName: BoneAtirador|aaAlertFiringRifle
       internalID: -7274288885554380284
       firstFrame: 0
@@ -157,7 +162,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: ShootRifle_Low
+      name: _FiringRifleV2
       takeName: BoneAtirador|aaAlertFiringRifleV2
       internalID: -5813327204531699079
       firstFrame: 0
@@ -186,7 +191,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Hit_Rib_High
+      name: Hit_High
       takeName: BoneAtirador|aaAlertRibHit
       internalID: 1988548889113166571
       firstFrame: 0
@@ -215,7 +220,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Hit_Rib_Low
+      name: _BoneAtirador|aaAlertRibHitV2
       takeName: BoneAtirador|aaAlertRibHitV2
       internalID: -1529961743160620465
       firstFrame: 0
@@ -244,7 +249,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle_AlertRifle_Low
+      name: _AlertRifleIdle
       takeName: BoneAtirador|aaAlertRifleIdle
       internalID: 7298718540160046149
       firstFrame: 0
@@ -255,8 +260,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -306,7 +311,7 @@ ModelImporter:
       takeName: BoneAtirador|aaAlertStandingDeathLeft
       internalID: 997736851413063833
       firstFrame: 5
-      lastFrame: 68
+      lastFrame: 69
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -331,7 +336,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walk_Rifle_High
+      name: _BoneAtirador|aaAlertWalkWithRifle
       takeName: BoneAtirador|aaAlertWalkWithRifle
       internalID: 5339783318361287436
       firstFrame: 0
@@ -342,8 +347,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -360,9 +365,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Walk_Rifle_Low
-      takeName: BoneAtirador|aaAlertWalkWithRifleV2
-      internalID: 8290079823327462872
+      name: _BoneAtirador|aaAlertWalkWithRifleV3
+      takeName: BoneAtirador|aaAlertWalkWithRifleV3
+      internalID: -351161298857172202
       firstFrame: 0
       lastFrame: 43
       wrapMode: 0
@@ -371,8 +376,37 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: _BoneAtirador|aaAlertWalkWithRifleV3.001
+      takeName: BoneAtirador|aaAlertWalkWithRifleV3.001
+      internalID: 7066630822889378296
+      firstFrame: 0
+      lastFrame: 43
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -393,7 +427,7 @@ ModelImporter:
       takeName: BoneAtirador|aaPatrolRifleIdle
       internalID: 3451838345967834965
       firstFrame: 0
-      lastFrame: 257
+      lastFrame: 258
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -422,7 +456,7 @@ ModelImporter:
       takeName: BoneAtirador|aaPatrolRifleWalk
       internalID: -2308370581033004668
       firstFrame: 0
-      lastFrame: 39
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -447,9 +481,38 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle_AlertRifle_LowV2
-      takeName: BoneAtirador|aaAlertFiringRifleV2
-      internalID: -1006836551052944326
+      name: _BoneAtirador|Action
+      takeName: BoneAtirador|Action
+      internalID: 8153952216103458530
+      firstFrame: 0
+      lastFrame: 43
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle_AlertRifle
+      takeName: BoneAtirador|aaAlertFiringRifle
+      internalID: 210936360139336596
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -478,7 +541,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.03
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -486,8 +549,8 @@ ModelImporter:
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -533,7 +596,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.03
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
