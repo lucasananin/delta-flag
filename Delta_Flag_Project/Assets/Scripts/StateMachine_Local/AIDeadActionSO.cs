@@ -11,17 +11,20 @@ public class AIDeadAction : StateAction
 {
     private AIAnim _anim = null;
     private Collider _collider = null;
+    private BloodPoolVFX _bloodPool = null;
 
     public override void Awake(StateMachine _stateMachine)
     {
         _anim = _stateMachine.GetComponent<AIAnim>();
         _collider = _stateMachine.GetComponent<Collider>();
+        _bloodPool = _stateMachine.GetComponentInChildren<BloodPoolVFX>();
     }
 
     public override void OnStateEnter()
     {
         _collider.enabled = false;
         _anim.TriggerDead();
+        _bloodPool.PlayWithDelay(3f);
     }
 
     public override void OnFixedUpdate()
