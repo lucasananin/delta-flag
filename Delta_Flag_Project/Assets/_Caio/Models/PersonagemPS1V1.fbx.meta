@@ -102,7 +102,7 @@ ModelImporter:
       name: Death_FallingBack
       takeName: BoneAtirador|aaAlertFallingBackDeath
       internalID: -2296175591929924448
-      firstFrame: 5
+      firstFrame: 10
       lastFrame: 78
       wrapMode: 0
       orientationOffsetY: 0
