@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 4937104475131621792}
   - component: {fileID: 3878408862990478312}
   m_Layer: 0
-  m_Name: VFX_Hit_Blood_2
+  m_Name: _VFX_Hit_Blood_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -83,18 +83,14 @@ public abstract class WeaponBehaviour : MonoBehaviour
         var _direction = (_targetPoint - _muzzle.position).normalized;
 
         var _dot = Vector3.Dot(_alignmentTransform.forward, _direction);
-        if (_dot < 0.1f)
-        {
+        var _isPointBehindMuzzle = _dot < 0.1f;
+        if (_isPointBehindMuzzle)
             _direction = (_ray.GetPoint(99) - _muzzle.position).normalized;
-        }
 
-        float _spreadInRadians = _weaponSO.Stats.SpreadAngle * Mathf.Deg2Rad;
-        float _randomYaw = Random.Range(-_spreadInRadians, _spreadInRadians);
-        float _randomPitch = Random.Range(-_spreadInRadians, _spreadInRadians);
-        Quaternion _spreadRotation = Quaternion.Euler(_randomPitch * Mathf.Rad2Deg, _randomYaw * Mathf.Rad2Deg, 0);
-        _direction = _spreadRotation * _direction;
-
-        return Quaternion.LookRotation(_direction);
+        var _spread = _weaponSO.Stats.SpreadAngle;
+        var _x = Random.Range(-_spread, _spread);
+        var _y = Random.Range(-_spread, _spread);
+        return Quaternion.LookRotation(_direction) * Quaternion.Euler(_x, _y, 0f);
     }
 
     public float GetPullTriggerTotalTime()

@@ -20,7 +20,7 @@ MonoBehaviour:
     _fireRate: 0.1
     _burstRate: 0.8
     _shotsPerBurst: 1
-    _spreadAngle: 4
+    _spreadAngle: 3
     _projectilesPerShot: 8
     _ammoPerShot: 1
     _magazineSize: 8

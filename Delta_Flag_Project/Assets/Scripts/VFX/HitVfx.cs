@@ -3,7 +3,7 @@ using UnityEngine;
 public class HitVfx : MonoBehaviour
 {
     [SerializeField] ProjectileBehaviour _projectileBehaviour = null;
-    [SerializeField] ParticleSystem _hitVfx = null;
+    [SerializeField] ParticleSystem _defaultVfx = null;
 
     private void OnValidate()
     {
@@ -23,7 +23,7 @@ public class HitVfx : MonoBehaviour
     private void SpawnVfx(RaycastHit _hitInfo)
     {
         var _holder = _hitInfo.collider.GetComponent<HitVfxHolder>();
-        var _prefab = _holder == null ? _hitVfx : _holder.Prefab;
+        var _prefab = _holder == null ? _defaultVfx : _holder.Prefab;
         var _instance = Instantiate(_prefab, _hitInfo.point, Quaternion.identity);
         _instance.transform.forward = _hitInfo.normal;
     }

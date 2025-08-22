@@ -7,6 +7,7 @@ public class PhysicalProjectile : ProjectileBehaviour
     [Header("// REFERENCES")]
     [SerializeField] Rigidbody _rb = null;
     [SerializeField] SphereCollider _dummyCollider = null;
+    //[SerializeField] GameObject _prefab = null;
 
     private readonly RaycastHit[] _results = new RaycastHit[9];
 
@@ -21,7 +22,6 @@ public class PhysicalProjectile : ProjectileBehaviour
         var _displacement = _projectileSO.MoveSpeed * Time.fixedDeltaTime * transform.forward;
         var _hits = Physics.SphereCastNonAlloc(transform.position, _dummyCollider.radius, _displacement.normalized, _results, _displacement.magnitude, _projectileSO.LayerMask);
         var _nextPosition = _rb.position + _displacement;
-        //var _nextPosition = transform.position + _displacement;
 
         for (int i = 0; i < _hits; i++)
         {
@@ -36,12 +36,11 @@ public class PhysicalProjectile : ProjectileBehaviour
             TryDamage(_healthBehaviour, _raycastHit);
             SendRaycastHitEvent(_raycastHit);
             DestroyThis();
-            //gameObject.SetActive(false);
+            //Instantiate(_prefab, _raycastHit.point, Quaternion.identity);
             return;
         }
 
         _rb.MovePosition(_nextPosition);
-        //transform.position += _displacement;
     }
 
     //public override void Init(ShootModel _newShootModel)

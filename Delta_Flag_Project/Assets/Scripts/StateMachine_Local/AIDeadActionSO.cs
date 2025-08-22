@@ -25,6 +25,11 @@ public class AIDeadAction : StateAction
         _collider.enabled = false;
         _anim.TriggerDead();
         _bloodPool.PlayWithDelay(3f);
+
+        if (_anim.gameObject.TryGetComponent(out CapFlyVFX _cap))
+        {
+            _cap.Play();
+        }
     }
 
     public override void OnFixedUpdate()
