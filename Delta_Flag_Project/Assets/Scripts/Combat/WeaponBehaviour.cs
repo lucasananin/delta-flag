@@ -79,8 +79,14 @@ public abstract class WeaponBehaviour : MonoBehaviour
     {
         var _alignmentTransform = _alignmentOrigin != null ? _alignmentOrigin : Camera.main.transform;
         var _ray = new Ray(_alignmentTransform.position, _alignmentTransform.forward);
-        var _targetPoint = Physics.Raycast(_ray, out RaycastHit hit, 999) ? hit.point : _ray.GetPoint(999);
+        var _targetPoint = Physics.Raycast(_ray, out RaycastHit hit, 99) ? hit.point : _ray.GetPoint(99);
         var _direction = (_targetPoint - _muzzle.position).normalized;
+
+        var _dot = Vector3.Dot(_alignmentTransform.forward, _direction);
+        if (_dot < 0.1f)
+        {
+            _direction = (_ray.GetPoint(99) - _muzzle.position).normalized;
+        }
 
         float _spreadInRadians = _weaponSO.Stats.SpreadAngle * Mathf.Deg2Rad;
         float _randomYaw = Random.Range(-_spreadInRadians, _spreadInRadians);
