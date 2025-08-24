@@ -7,6 +7,7 @@ public class AIEntity : EntityBehaviour
     [SerializeField] NavMeshAgent _navAgent = null;
     [SerializeField] TagCollectionSO _obstacleTags = null;
     [SerializeField] LayerMask _layerMask = default;
+    [SerializeField] float _detectionHeight = 1.5f;
 
     [Header("// READONLY")]
     [SerializeField] EntityBehaviour _targetEntity = null;
@@ -122,11 +123,11 @@ public class AIEntity : EntityBehaviour
 
     public bool CanSeeTargetFromPoint(Vector3 _point)
     {
-        var _vector = GetTargetEntityPosition() - _point + Vector3.up;
-        var _direction = _vector.normalized;
-        var _distance = _vector.magnitude;
+        var _offset = GetTargetEntityPosition() - _point;
+        var _direction = _offset.normalized;
+        var _distance = _offset.magnitude;
         var _sphereRadius = 0.25f;
-        int _hits = Physics.SphereCastNonAlloc(_point, _sphereRadius, _direction, _results, _distance, _layerMask);
+        int _hits = Physics.SphereCastNonAlloc(_point + GetDetectionOffset(), _sphereRadius, _direction, _results, _distance, _layerMask);
 
         for (int i = 0; i < _hits; i++)
         {
@@ -138,6 +139,11 @@ public class AIEntity : EntityBehaviour
         }
 
         return false;
+    }
+
+    public Vector3 GetDetectionOffset()
+    {
+        return Vector3.up * _detectionHeight;
     }
 
     public bool IsTargetEntity(GameObject _gameObject)

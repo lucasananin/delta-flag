@@ -9,6 +9,7 @@ public class EntityDetector : MonoBehaviour
     [SerializeField] LayerMask _layerMask = default;
     [SerializeField] float _maxDistance = 5f;
     [SerializeField] float _viewAngle = 45f;
+    [SerializeField] float _detectionHeight = 1.5f;
 
     [Header("// READONLY")]
     [SerializeField] List<GameObject> _targets = null;
@@ -61,11 +62,11 @@ public class EntityDetector : MonoBehaviour
 
     public bool CanSeeTarget(Transform _target, Vector3 _point)
     {
-        var _vector = _target.position - _point + Vector3.up;
-        var _direction = _vector.normalized;
-        var _distance = _vector.magnitude;
+        var _offset = _target.position - _point;
+        var _direction = _offset.normalized;
+        var _distance = _offset.magnitude;
         var _sphereRadius = 0.25f;
-        int _hits = Physics.SphereCastNonAlloc(_point, _sphereRadius, _direction, _results, _distance, _layerMask);
+        int _hits = Physics.SphereCastNonAlloc(_point + GetDetectionOffset(), _sphereRadius, _direction, _results, _distance, _layerMask);
 
         for (int i = 0; i < _hits; i++)
         {
@@ -77,5 +78,10 @@ public class EntityDetector : MonoBehaviour
         }
 
         return false;
+    }
+
+    public Vector3 GetDetectionOffset()
+    {
+        return Vector3.up * _detectionHeight;
     }
 }
