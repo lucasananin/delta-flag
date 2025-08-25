@@ -49,10 +49,11 @@ public class AIAlertAction : StateAction
         if (_aiEntity.IsTargetOnLineOfSight && _isCloseToTarget)
         {
             _mover.Stop();
-            var _targetDirection = (_aiEntity.GetTargetEntityPosition() - _mover.transform.position).normalized;
+            var _targetPosition = _aiEntity.GetTargetEntityPosition();
+            var _targetDirection = (_targetPosition - _mover.transform.position).normalized;
             _targetDirection.y = 0;
             _mover.RotateTo(_targetDirection);
-            _weaponHandler.TryShootAll();
+            _weaponHandler.TryShootAll(_targetPosition);
         }
         else
         {

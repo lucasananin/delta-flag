@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -91,6 +92,13 @@ public abstract class WeaponBehaviour : MonoBehaviour
         var _x = Random.Range(-_spread, _spread);
         var _y = Random.Range(-_spread, _spread);
         return Quaternion.LookRotation(_direction) * Quaternion.Euler(_x, _y, 0f);
+    }
+
+    public void SetLookToAlignment(Vector3 _point)
+    {
+        if (_alignmentOrigin == null) return;
+        var _position = _point + Vector3.up * _alignmentOrigin.localPosition.y;
+        _alignmentOrigin.LookAt(_position, Vector3.up);
     }
 
     public float GetPullTriggerTotalTime()

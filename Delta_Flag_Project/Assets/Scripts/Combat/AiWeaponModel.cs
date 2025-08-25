@@ -62,4 +62,13 @@ public class AIWeaponModel
             _weapons[i].ForceStop();
         }
     }
+
+    public void SetAlignmentLook(Vector3 _targetPoint)
+    {
+        int _count = _weapons.Count;
+        for (int i = 0; i < _count; i++)
+        {
+            _weapons[i].SetLookToAlignment(_targetPoint);
+        }
+    }
 }

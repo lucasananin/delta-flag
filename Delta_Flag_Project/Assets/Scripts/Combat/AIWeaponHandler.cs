@@ -19,7 +19,7 @@ public class AIWeaponHandler : MonoBehaviour
         }
     }
 
-    public void TryShootAll(/*AIEntity _aiEntity*/)
+    public void TryShootAll(/*AIEntity _aiEntity*/Vector3 _targetPoint)
     {
         int _count = _weaponModels.Count;
 
@@ -44,6 +44,7 @@ public class AIWeaponHandler : MonoBehaviour
             //if (_model.OnlyShootOnTargetAcquired && !_aiEntity.IsTargetOnLineOfSight) continue;
 
             _model.ResetTime();
+            _model.SetAlignmentLook(_targetPoint);
             StartCoroutine(Shoot_Routine(_model));
         }
     }
