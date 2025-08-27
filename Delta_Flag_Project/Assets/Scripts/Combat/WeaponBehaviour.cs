@@ -19,6 +19,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
     public event UnityAction OnPullTrigger = null;
     public event UnityAction OnReleaseTrigger = null;
 
+    public EntityBehaviour EntitySource { get => _entitySource; }
     public WeaponSO WeaponSO { get => _weaponSO; }
 
     protected virtual void Awake()
@@ -65,7 +66,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
             var _position = GeneratePosition(_projectileSO);
             var _rotation = GenerateRotation();
             var _projectile = Instantiate(_projectileSO.Prefab, _position, _rotation);
-            var _shootModel = new ShootModel(_entitySource, this, _projectileSO);
+            var _shootModel = new ShootModel(EntitySource, this, _projectileSO);
             _projectile.Init(_shootModel);
         }
     }
