@@ -29,7 +29,6 @@ public class NoiseListener : MonoBehaviour
         if (_sqrMagnitude < _totalDistance * _totalDistance)
         {
             _entity.SetTargetEntity(_model.SourceEntity);
-            //Debug.Log($"I {gameObject.name} heard!");
         }
     }
 }
