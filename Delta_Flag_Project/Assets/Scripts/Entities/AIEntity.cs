@@ -38,6 +38,11 @@ public class AIEntity : EntityBehaviour
         _targetEntity = _entityValue;
     }
 
+    public EntityBehaviour GetTargetEntity()
+    {
+        return _targetEntity;
+    }
+
     public bool HasTargetEntity()
     {
         return _targetEntity != null && _targetEntity.IsAlive();
