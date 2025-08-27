@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class NoiseListener : MonoBehaviour
 {
+    [SerializeField] AIEntity _entity = null;
     [SerializeField] float _distance = 10f;
 
     public event UnityAction<NoiseModel> OnHeardSomething = null;
@@ -19,13 +20,16 @@ public class NoiseListener : MonoBehaviour
 
     private void CheckNoise(NoiseModel _model)
     {
+        if (_entity.HasTargetEntity()) return;
+        if (!_entity.IsAlive()) return;
+
         var _sqrMagnitude = (_model.Transform.position - transform.position).sqrMagnitude;
         var _totalDistance = _distance + _model.Distance;
 
         if (_sqrMagnitude < _totalDistance * _totalDistance)
         {
-            Debug.Log($"I {gameObject.name} heard!");
-            OnHeardSomething?.Invoke(_model);
+            _entity.SetTargetEntity(_model.SourceEntity);
+            //Debug.Log($"I {gameObject.name} heard!");
         }
     }
 }

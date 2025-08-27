@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShootNoise : NoiseEmitter
 {
-    [Header("// SHOOT REFERENCES")]
+    [Header("// SHOOT NOISE")]
     [SerializeField] WeaponBehaviour _weapon = null;
 
     private void OnEnable()
