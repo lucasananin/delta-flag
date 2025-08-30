@@ -7,10 +7,10 @@ public class AmmoHandler : MonoBehaviour
     [SerializeField, Range(0f, 100f)] int _initialAmmoPercentage = 50;
     [SerializeField] AmmoModel[] _models = null;
 
-    public bool InfiniteAmmo { get => _infiniteAmmo; }
-    public AmmoModel[] Models { get => _models; private set => _models = value; }
-
     public event System.Action OnAmmoChanged = null;
+
+    public bool InfiniteAmmo { get => _infiniteAmmo; }
+    public AmmoModel[] Models { get => _models; }
 
     private void Awake()
     {
@@ -32,6 +32,12 @@ public class AmmoHandler : MonoBehaviour
         }
 
         OnAmmoChanged?.Invoke();
+    }
+
+    public void RestoreAmmo(AmmoSO _type, int _percentage)
+    {
+        var _model = GetModel(_type);
+        _model.RestoreQuantity(_percentage);
     }
 
     public void RestoreOneAmmoModel(int _percentage)
@@ -93,6 +99,12 @@ public class AmmoHandler : MonoBehaviour
     {
         var _model = GetModel(_projectileSO.AmmoSO);
         return _model is not null ? _model.Amount : -1;
+    }
+
+    public bool IsFull(AmmoSO _type)
+    {
+        var _model = GetModel(_type);
+        return _model.IsFull();
     }
 
     private AmmoModel GetModel(AmmoSO _ammoSO)

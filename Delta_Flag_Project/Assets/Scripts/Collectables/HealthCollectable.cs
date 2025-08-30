@@ -8,7 +8,8 @@ public class HealthCollectable : CollectableBehaviour
     {
         if (_agent.TryGetComponent(out HealthBehaviour _health))
         {
-            // if health is full, return.
+            if (_health.IsFull()) return;
+
             _health.RestoreHealth(_restorePercentage);
             base.Collect(_agent);
         }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class HealthBehaviour : MonoBehaviour
@@ -83,5 +84,10 @@ public abstract class HealthBehaviour : MonoBehaviour
     public virtual float GetNormalizedValue()
     {
         return _currentHealth / (_maxHealth * 1f);
+    }
+
+    internal bool IsFull()
+    {
+        return _currentHealth >= _maxHealth;
     }
 }
