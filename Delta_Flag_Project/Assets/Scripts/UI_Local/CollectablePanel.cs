@@ -5,6 +5,14 @@ public class CollectablePanel : MonoBehaviour
     [SerializeField] CollectableUISlot _prefab = null;
     [SerializeField] RectTransform _content = null;
 
+    private void Awake()
+    {
+        foreach (Transform _child in _content.transform)
+        {
+            Destroy(_child.gameObject);
+        }
+    }
+
     private void OnEnable()
     {
         CollectableBehaviour.OnAnyCollected += InitSlot;
