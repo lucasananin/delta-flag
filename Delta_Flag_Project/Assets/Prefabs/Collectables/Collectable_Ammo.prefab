@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3415911785986114969, guid: 53cc03919dbea1641a5a4c0f2618874f, type: 3}
       propertyPath: m_Name
-      value: Collectable_Ammo_1
+      value: Collectable_Ammo
       objectReference: {fileID: 0}
     - target: {fileID: 4011604131553361904, guid: 53cc03919dbea1641a5a4c0f2618874f, type: 3}
       propertyPath: m_LocalScale.z
@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6257b8bc91aa9d945b4cfd4a45141168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _description: Default Ammo Rounds
   _onCollected:
     m_PersistentCalls:
       m_Calls: []

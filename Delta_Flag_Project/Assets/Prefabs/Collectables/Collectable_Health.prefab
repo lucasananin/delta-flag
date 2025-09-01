@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3415911785986114969, guid: 53cc03919dbea1641a5a4c0f2618874f, type: 3}
       propertyPath: m_Name
-      value: Collectable_Base
+      value: Collectable_Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203178789805853208, guid: 53cc03919dbea1641a5a4c0f2618874f, type: 3}
+      propertyPath: _description
+      value: First Aid Kit
       objectReference: {fileID: 0}
     - target: {fileID: 7563330336219635601, guid: 53cc03919dbea1641a5a4c0f2618874f, type: 3}
       propertyPath: m_LocalPosition.x
