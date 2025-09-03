@@ -16,6 +16,7 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] protected int _currentWeaponIndex = 0;
     [SerializeField] protected bool _isWaitingSwapDelay = false;
 
+    public event UnityAction<WeaponBehaviour> OnWeaponSet = null;
     public event UnityAction OnWeaponAdded = null;
     public event UnityAction OnWeaponSwapped = null;
 
@@ -31,6 +32,7 @@ public class WeaponHandler : MonoBehaviour
         _currentWeapon = _weaponsList[_currentWeaponIndex];
         _currentWeapon.Init(_entitySource, _ammoHandler);
         UpdateVisuals();
+        OnWeaponSet?.Invoke(_currentWeapon);
     }
 
     private void UpdateVisuals()

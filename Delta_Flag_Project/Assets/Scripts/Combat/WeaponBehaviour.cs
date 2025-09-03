@@ -1,4 +1,3 @@
-using Cinemachine.Utility;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -152,7 +151,9 @@ public abstract class WeaponBehaviour : MonoBehaviour
 
     public string GetAmmoString()
     {
-        return _ammoHandler == null ? $"-" : $"{_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO)}";
+        var _totalAmmo = Mathf.Abs(_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO) - _magazineAmmo);
+        return $"{_magazineAmmo}/{_totalAmmo}";
+        //return _ammoHandler == null ? $"-" : $"{_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO)}";
     }
 
     public int GetDamage()
@@ -163,11 +164,4 @@ public abstract class WeaponBehaviour : MonoBehaviour
     public virtual void ForceStop()
     {
     }
-
-    //public Vector2 _ammoString = default;
-    //private void Update()
-    //{
-    //    var _totalAmmo = Mathf.Abs(_ammoHandler.GetAmmoQuantity(_weaponSO.ProjectileSO) - _magazineAmmo);
-    //    _ammoString = new(_magazineAmmo, _totalAmmo);
-    //}
 }

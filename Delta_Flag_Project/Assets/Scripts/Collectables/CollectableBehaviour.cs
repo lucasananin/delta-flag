@@ -3,8 +3,8 @@ using UnityEngine.Events;
 
 public class CollectableBehaviour : MonoBehaviour
 {
-    [SerializeField] string _description = null;
-    [SerializeField] UnityEvent<CollectableAgent> _onCollected = null;
+    [SerializeField] protected string _description = null;
+    [SerializeField] protected UnityEvent<CollectableAgent> _onCollected = null;
 
     public string Description { get => _description;}
 
