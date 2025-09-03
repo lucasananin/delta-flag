@@ -57,7 +57,7 @@ public abstract class ProjectileBehaviour : MonoBehaviour
     protected void SetDestroyTimer()
     {
         //_timeUntilDestroy = Random.Range(_stats.DestroyTimeRange.x, _stats.DestroyTimeRange.y);
-        _timeUntilDestroy = Random.Range(8, 12);
+        _timeUntilDestroy = Random.Range(2f, 3f);
         _destroyTimer = 0f;
     }
 

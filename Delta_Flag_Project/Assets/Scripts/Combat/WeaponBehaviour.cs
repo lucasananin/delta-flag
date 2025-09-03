@@ -30,13 +30,13 @@ public abstract class WeaponBehaviour : MonoBehaviour
     {
         this._ammoHandler = _ammoHandler;
         Init(_entityBehaviour);
-        //ReloadMagazine();
     }
 
     public virtual void Init(EntityBehaviour _entityBehaviour)
     {
         _entitySource = _entityBehaviour;
         OnInit?.Invoke(this);
+        TryReloadEmptyMagazine();
     }
 
 
@@ -56,6 +56,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
         PrepareProjectile(_weaponSO.ProjectileSO);
         DecreaseAmmo(_weaponSO.ProjectileSO);
         OnShoot?.Invoke();
+        TryReloadEmptyMagazine();
     }
 
     private void PrepareProjectile(ProjectileSO _projectileSO)
@@ -135,6 +136,11 @@ public abstract class WeaponBehaviour : MonoBehaviour
         }
     }
 
+    private void TryReloadEmptyMagazine()
+    {
+        if (IsMagazineEmpty()) ReloadMagazine();
+    }
+
     private void DecreaseAmmo(ProjectileSO _projectileSO)
     {
         if (_ammoHandler == null) return;
@@ -147,6 +153,11 @@ public abstract class WeaponBehaviour : MonoBehaviour
     public bool HasAmmo()
     {
         return _ammoHandler == null || _magazineAmmo >= _weaponSO.Stats.AmmoPerShot || _ammoHandler.InfiniteAmmo;
+    }
+
+    public bool IsMagazineEmpty()
+    {
+        return _ammoHandler != null && _magazineAmmo <= 0;
     }
 
     public string GetAmmoString()
