@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 6541923123035999543}
   - component: {fileID: 5482137563136749785}
   - component: {fileID: 8793065915478500859}
+  - component: {fileID: 8229533561264012396}
   m_Layer: 6
   m_Name: Enemy_Base
   m_TagString: Enemy
@@ -379,6 +380,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isInvincible: 0
   _maxHealth: 6
+  _onHurt:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8229533561264012396}
+        m_TargetAssemblyTypeName: LootDropper, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _currentHealth: 0
   _wasDamagedThisFrame: 0
   _isStaggering: 0
@@ -448,6 +467,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _health: {fileID: 8552543337978674661}
+--- !u!114 &8229533561264012396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816200921606995652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0562707a15bc14fb81174d64e56582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loots:
+  - {fileID: 250079444888202568, guid: 7a4837b71731a2c46ac2904797585023, type: 3}
+  - {fileID: 250079444888202568, guid: d0ed2123852509647bad7a8aeb7c4bef, type: 3}
+  _jumpPower: 0.5
+  _jumpDuration: 0.5
+  _ease: 1
 --- !u!1 &2954289892432482587
 GameObject:
   m_ObjectHideFlags: 0

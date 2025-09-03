@@ -1,10 +1,14 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class HealthBehaviour : MonoBehaviour
 {
     [SerializeField] protected bool _isInvincible = false;
     [SerializeField] protected int _maxHealth = 100;
+
+    [Header("// UNITY EVENTS")]
+    [SerializeField] protected UnityEvent _onHurt = null;
+    [SerializeField] protected UnityEvent _onDead = null;
 
     [Header("// READONLY")]
     [SerializeField] protected int _currentHealth = 0;
@@ -16,7 +20,7 @@ public abstract class HealthBehaviour : MonoBehaviour
     public bool IsStaggering { get => _isStaggering; set => _isStaggering = value; }
     public DamageModel LastDamageModel { get => _lastDamageModel; private set => _lastDamageModel = value; }
 
-    public event System.Action OnDamageTaken = null;
+    public event System.Action OnHurt = null;
     public event System.Action OnDead = null;
     public event System.Action OnRestored = null;
 
@@ -67,13 +71,15 @@ public abstract class HealthBehaviour : MonoBehaviour
     {
         _wasDamagedThisFrame = true;
         _currentHealth = 0;
+        _onDead?.Invoke();
         OnDead?.Invoke();
     }
 
     protected virtual void OnDamageTaken_()
     {
         _wasDamagedThisFrame = true;
-        OnDamageTaken?.Invoke();
+        _onHurt?.Invoke();
+        OnHurt?.Invoke();
     }
 
     public bool IsAlive()

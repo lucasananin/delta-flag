@@ -7,12 +7,12 @@ public class TakenDamageNoise : NoiseEmitter
 
     private void OnEnable()
     {
-        _health.OnDamageTaken += SendNoise;
+        _health.OnHurt += SendNoise;
     }
 
     private void OnDisable()
     {
-        _health.OnDamageTaken -= SendNoise;
+        _health.OnHurt -= SendNoise;
     }
 
     private void SendNoise()

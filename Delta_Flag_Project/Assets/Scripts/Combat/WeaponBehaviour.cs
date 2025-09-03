@@ -30,7 +30,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
     {
         this._ammoHandler = _ammoHandler;
         Init(_entityBehaviour);
-        ReloadMagazine();
+        //ReloadMagazine();
     }
 
     public virtual void Init(EntityBehaviour _entityBehaviour)

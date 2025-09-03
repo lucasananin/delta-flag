@@ -7,12 +7,12 @@ public class DamageCamShaker : CameraShaker
 
     private void OnEnable()
     {
-        _health.OnDamageTaken += Shake;
+        _health.OnHurt += Shake;
     }
 
     private void OnDisable()
     {
-        _health.OnDamageTaken -= Shake;
+        _health.OnHurt -= Shake;
     }
 
     public override void Shake()

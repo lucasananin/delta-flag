@@ -18,7 +18,7 @@ public class HealthDisplay : MonoBehaviour
 
     private void OnDisable()
     {
-        _health.OnDamageTaken -= UpdateVisuals;
+        _health.OnHurt -= UpdateVisuals;
         _health.OnRestored -= UpdateVisuals;
         _health.OnDead -= UpdateVisuals;
     }
@@ -26,7 +26,7 @@ public class HealthDisplay : MonoBehaviour
     public void Init(HealthBehaviour _health)
     {
         this._health = _health;
-        this._health.OnDamageTaken += UpdateVisuals;
+        this._health.OnHurt += UpdateVisuals;
         this._health.OnRestored += UpdateVisuals;
         this._health.OnDead += UpdateVisuals;
         UpdateVisuals();

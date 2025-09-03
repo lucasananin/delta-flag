@@ -6,6 +6,11 @@ public class PlayerWeaponHandler : WeaponHandler
     [Header("// REFERENCES")]
     [SerializeField] StarterAssetsInputs _input = null;
 
+    private void Start()
+    {
+        Reload();
+    }
+
     private void Update()
     {
         if (_input.Shoot.action.WasPerformedThisFrame())
