@@ -41,6 +41,9 @@ public class PhysicalProjectile : ProjectileBehaviour
         }
 
         _rb.MovePosition(_nextPosition);
+
+        //if (_hits > 1)
+        //    Debug.Log($"{_hits}");
     }
 
     //public override void Init(ShootModel _newShootModel)

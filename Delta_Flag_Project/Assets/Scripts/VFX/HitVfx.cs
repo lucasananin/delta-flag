@@ -23,6 +23,8 @@ public class HitVfx : MonoBehaviour
     private void SpawnVfx(RaycastHit _hitInfo)
     {
         var _holder = _hitInfo.collider.GetComponent<HitVfxHolder>();
+        if (_holder != null && _holder.Prefab == null) return;
+
         var _prefab = _holder == null ? _defaultVfx : _holder.Prefab;
         var _instance = Instantiate(_prefab, _hitInfo.point, Quaternion.identity);
         _instance.transform.forward = _hitInfo.normal;
